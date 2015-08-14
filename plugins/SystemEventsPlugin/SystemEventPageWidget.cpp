@@ -176,6 +176,7 @@ void SystemEventPageWidget::onFilterApplyClicked()
 
 void SystemEventPageWidget::reset()
 {
+	// TODO: FIX ME!!!
 	//m_pProvidersModel->reset();
 	//m_pModel->reset();
 

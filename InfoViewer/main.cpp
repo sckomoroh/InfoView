@@ -1,6 +1,7 @@
 #include "MainWindow.h"
 #include <QtWidgets/QApplication>
 
+[System::STAThreadAttribute]
 int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
