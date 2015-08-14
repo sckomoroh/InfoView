@@ -8,6 +8,8 @@
 MongoJobParser::MongoJobParser()
 {
 	m_pStorage = new MongoJobStorage;
+
+	addListener(m_pStorage);
 }
 
 MongoJobParser::~MongoJobParser()

@@ -75,6 +75,8 @@ void *MongoJobModel::qt_metacast(const char *_clname)
     if (!_clname) return 0;
     if (!strcmp(_clname, qt_meta_stringdata_MongoJobModel.stringdata))
         return static_cast<void*>(const_cast< MongoJobModel*>(this));
+    if (!strcmp(_clname, "IMongoStorageListener"))
+        return static_cast< IMongoStorageListener*>(const_cast< MongoJobModel*>(this));
     return QAbstractItemModel::qt_metacast(_clname);
 }
 

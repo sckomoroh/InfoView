@@ -12,21 +12,31 @@ MongoEventStorage::~MongoEventStorage()
 
 void MongoEventStorage::clear()
 {
+	fireBeginChange();
+
 	for each (MongoEventData* pItem in m_events)
 	{
 		delete pItem;
 	}
 
+	m_filteredEvents.clear();
 	m_events.clear();
+
+	fireEndChange();
 }
 
 void MongoEventStorage::addEvent(MongoEventData* pEvent)
 {
 	m_events.append(pEvent);
+	m_filteredEvents.append(pEvent);
 }
 
-QList<MongoEventData*> MongoEventStorage::filteredEvents(const QString& filterString, int iFilterFlags)
+void MongoEventStorage::filterEvents(const QString& filterString, int iFilterFlags)
 {
+	fireBeginChange();
+
+	m_filteredEvents.clear();
+
 	QList<MongoEventData*> result;
 
 	for each (MongoEventData* pItem in m_events)
@@ -38,9 +48,82 @@ QList<MongoEventData*> MongoEventStorage::filteredEvents(const QString& filterSt
 
 		if (pItem->message().contains(filterString, Qt::CaseInsensitive))
 		{
-			result.append(pItem);
+			m_filteredEvents.append(pItem);
 		}
 	}
 
-	return result;
+	fireEndChange();
+}
+
+void MongoEventStorage::fireBeginChange()
+{
+	foreach(IMongoStorageListener* listener, m_listeners)
+	{
+		listener->onBeginChange();
+	}
+}
+
+void MongoEventStorage::fireEndChange()
+{
+	foreach(IMongoStorageListener* listener, m_listeners)
+	{
+		listener->onEndChange();
+	}
+}
+
+void MongoEventStorage::onStartParsingBson()
+{
+}
+
+void MongoEventStorage::onCompleteParsingBson()
+{
+}
+
+void MongoEventStorage::onStartParsingEvents()
+{
+}
+
+void MongoEventStorage::onEventParsed(uint iCurrent, uint iTotal)
+{
+}
+
+void MongoEventStorage::onCompleteParsingEvents()
+{
+	sortByTime(false);
+}
+
+void MongoEventStorage::sortByMessage(bool acsending)
+{
+	fireBeginChange();
+
+	if (acsending)
+	{
+		qSort(m_events.begin(), m_events.end(), MongoEventData::acsByMessage);
+		qSort(m_filteredEvents.begin(), m_filteredEvents.end(), MongoEventData::acsByMessage);
+	}
+	else
+	{
+		qSort(m_events.begin(), m_events.end(), MongoEventData::decsByMessage);
+		qSort(m_filteredEvents.begin(), m_filteredEvents.end(), MongoEventData::decsByMessage);
+	}
+
+	fireEndChange();
+}
+
+void MongoEventStorage::sortByTime(bool acsending)
+{
+	fireBeginChange();
+
+	if (acsending)
+	{
+		qSort(m_events.begin(), m_events.end(), MongoEventData::acsByTime);
+		qSort(m_filteredEvents.begin(), m_filteredEvents.end(), MongoEventData::acsByTime);
+	}
+	else
+	{
+		qSort(m_events.begin(), m_events.end(), MongoEventData::decsByTime);
+		qSort(m_filteredEvents.begin(), m_filteredEvents.end(), MongoEventData::decsByTime);
+	}
+
+	fireEndChange();
 }

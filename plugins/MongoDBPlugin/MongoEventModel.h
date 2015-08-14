@@ -6,8 +6,11 @@
 #include <QImage>
 
 #include "MongoEventData.h"
+#include "MongoEventStorage.h"
 
-class MongoEventModel : public QAbstractItemModel
+class MongoEventModel 
+	: public QAbstractItemModel
+	, public IMongoStorageListener
 {
 	Q_OBJECT
 private:
@@ -17,14 +20,15 @@ private:
 	static QImage m_eventUnknown;
 
 private:
-	QList<MongoEventData*> m_events;
+	MongoEventStorage* m_storage;
 
 public:
-	MongoEventModel(QObject *parent);
+	MongoEventModel(MongoEventStorage* storage, QObject *parent);
 	~MongoEventModel();
 
-	void setModelData(const QList<MongoEventData*>& content);
-	void reset();
+private:
+	virtual void onBeginChange();
+	virtual void onEndChange();
 
 private:
 	// Implementing QAbstractItemModel
@@ -35,9 +39,6 @@ private:
 	virtual int			rowCount(const QModelIndex & parent = QModelIndex()) const;
 	virtual QVariant	headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const;
 	virtual void 		sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
-
-	void	sortByMessage(bool acsending);
-	void	sortByTime(bool acsending);
 };
 
 #endif // EVENTSTREEMODEL_H

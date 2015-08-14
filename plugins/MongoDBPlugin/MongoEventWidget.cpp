@@ -7,8 +7,8 @@ MongoEventWidget::MongoEventWidget(QWidget *parent)
 {
 	ui.setupUi(this);
 
-	m_pEventsModel = new MongoEventModel(this);
 	m_pEventsParserThread = new MongoEventParserThread(this);
+	m_pEventsModel = new MongoEventModel(m_pEventsParserThread->parser()->storage(), this);
 
 	ui.treeView->setModel(m_pEventsModel);
 	ui.loadingProgressBar->hide();
@@ -48,8 +48,6 @@ void MongoEventWidget::reset()
 	ui.eventsCheckBox->setChecked(true);
 
 	ui.filterLineEdit->setText("");
-
-	m_pEventsModel->reset();
 }
 
 void MongoEventWidget::parseFile(const QString& fileName)
@@ -71,7 +69,6 @@ void MongoEventWidget::onEventsItemParsed(uint iCurrent, uint iTotal)
 
 void MongoEventWidget::onEventsCompleteParsing()
 {
-	m_pEventsModel->setModelData(m_pEventsParserThread->parser()->storage()->events());
 	ui.loadingProgressBar->hide();
 
 	ui.treeView->resizeColumnToContents(0);
@@ -108,7 +105,5 @@ void MongoEventWidget::onApplyButtonClicked()
 		iFilteredFlags |= MongoEventData::EventWarning;
 	}
 
-	result = m_pEventsParserThread->parser()->storage()->filteredEvents(filterString, iFilteredFlags);
-
-	m_pEventsModel->setModelData(result);
+	m_pEventsParserThread->parser()->storage()->filterEvents(filterString, iFilteredFlags);
 }

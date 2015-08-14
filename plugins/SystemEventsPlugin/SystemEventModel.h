@@ -31,8 +31,6 @@ public:
 
 	SystemEventData* rawData(const QModelIndex & index);
 
-	void reset();
-
 public:
 	virtual void beginStorageChange();
 	virtual void endStorageChange();

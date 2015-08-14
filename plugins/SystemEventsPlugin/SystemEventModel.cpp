@@ -56,13 +56,6 @@ SystemEventModel::~SystemEventModel()
 {
 }
 
-void SystemEventModel::reset()
-{
-	beginResetModel();
-
-	endResetModel();
-}
-
 SystemEventData* SystemEventModel::rawData(const QModelIndex & index)
 {
 	if (!index.isValid())

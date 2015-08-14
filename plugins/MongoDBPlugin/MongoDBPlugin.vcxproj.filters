@@ -96,6 +96,9 @@
     <ClInclude Include="IMongoJobParserListener.h">
       <Filter>widget\headers</Filter>
     </ClInclude>
+    <ClInclude Include="IMongoStorageListener.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mongodbplugin.cpp">

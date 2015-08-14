@@ -15,9 +15,9 @@
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
-	, m_applicationSettings(QSettings::NativeFormat, QSettings::UserScope, "AppRecovery", "AAInfo view")
+	, m_applicationSettings(QSettings::NativeFormat, QSettings::UserScope, "SelfProduction", "Info view")
 {
-	ILogger* pFileLogger = new CFileLogger("AAView.log");
+	ILogger* pFileLogger = new CFileLogger("SFInfoView.log");
 	CLogger::RegisterLogger("FILE", pFileLogger);
 
 	ui.setupUi(this);

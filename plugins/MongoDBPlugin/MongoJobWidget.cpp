@@ -5,12 +5,12 @@ MongoJobWidget::MongoJobWidget(QWidget *parent)
 {
 	ui.setupUi(this);
 
-	m_pJobsModel = new MongoJobModel(this);
+	m_pJobsParserThread = new MognoJobParserThread(this);
+
+	m_pJobsModel = new MongoJobModel(m_pJobsParserThread->parser()->storage(), this);
 	ui.jobsTreeView->setModel(m_pJobsModel);
 
 	ui.loadingProgressBar->hide();
-
-	m_pJobsParserThread = new MognoJobParserThread(this);
 
 	connect(
 		m_pJobsParserThread,
@@ -63,8 +63,6 @@ void MongoJobWidget::reset()
 	ui.endLineEdit->setText("");
 	ui.errorDetailsTextBrowser->setText("");
 	ui.errorStackTextBrowser->setText("");
-
-	m_pJobsModel->reset();
 }
 
 void MongoJobWidget::parseFile(const QString& fileName)
@@ -103,7 +101,7 @@ void MongoJobWidget::onJodApplyFilterClick()
         iJobTypeFlags |= MongoJobData::Fail;
 	}
 
-	m_pJobsModel->setModelData(m_pJobsParserThread->parser()->storage()->filteredJob((MongoJobData::MongoJobType)iJobTypeFlags, filterString));
+	m_pJobsParserThread->parser()->storage()->filterJob((MongoJobData::MongoJobType)iJobTypeFlags, filterString);
 }
 
 void MongoJobWidget::onCurrentJobChanged(const QModelIndex& index, const QModelIndex& oldIndex)
@@ -155,7 +153,6 @@ void MongoJobWidget::onJobsItemParsed(uint iCurrent, uint iTotal)
 
 void MongoJobWidget::onJobsCompleteParsing()
 {
-	m_pJobsModel->setModelData(m_pJobsParserThread->parser()->storage()->jobs());
 	ui.loadingProgressBar->hide();
 
 	ui.jobsTreeView->resizeColumnToContents(0);

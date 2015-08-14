@@ -8,8 +8,9 @@ QImage MongoEventModel::m_eventInformation;
 QImage MongoEventModel::m_eventWarning;
 QImage MongoEventModel::m_eventUnknown;
 
-MongoEventModel::MongoEventModel(QObject *parent)
+MongoEventModel::MongoEventModel(MongoEventStorage* storage, QObject *parent)
 	: QAbstractItemModel(parent)
+	, m_storage(storage)
 {
 	if (m_eventError.isNull())
 	{
@@ -30,33 +31,12 @@ MongoEventModel::MongoEventModel(QObject *parent)
 	{
 		m_eventUnknown = QImage(":/plugin/images/Resources/question.png");
 	}
+
+	m_storage->addListener(this);
 }
 
 MongoEventModel::~MongoEventModel()
 {
-}
-
-void MongoEventModel::reset()
-{
-	beginResetModel();
-
-	m_events.clear();
-
-	endResetModel();
-}
-
-void MongoEventModel::setModelData(const QList<MongoEventData*>& content)
-{
-	beginResetModel();
-
-	m_events.clear();
-
-	foreach(MongoEventData* pItem, content)
-	{
-		m_events.append(pItem);
-	}
-
-	endResetModel();
 }
 
 QModelIndex	MongoEventModel::index(int row, int column, const QModelIndex& parent/* = QModelIndex()*/) const
@@ -91,7 +71,7 @@ QVariant MongoEventModel::data(const QModelIndex& index, int role/* = Qt::Displa
 		return QVariant();
 	}
 
-	MongoEventData* pObject = m_events.at(index.row());
+	MongoEventData* pObject = m_storage->filteredEventAt(index.row());
 
 	if (role == Qt::DecorationRole)
 	{
@@ -136,7 +116,7 @@ int	MongoEventModel::rowCount(const QModelIndex& parent/* = QModelIndex()*/) con
 		return 0;
 	}
 
-	return m_events.count();
+	return m_storage->filteredEventsCount();
 }
 
 QVariant MongoEventModel::headerData(int section, Qt::Orientation orientation, int role/* = Qt::DisplayRole*/) const
@@ -165,42 +145,23 @@ QVariant MongoEventModel::headerData(int section, Qt::Orientation orientation, i
 
 void MongoEventModel::sort(int column, Qt::SortOrder order)
 {
-	beginResetModel();
-
 	switch (column)
 	{
 		case 0:
-			sortByMessage(order == Qt::AscendingOrder);
+			m_storage->sortByMessage(order == Qt::AscendingOrder);
 			break;
 		case 1:
-			sortByTime(order == Qt::AscendingOrder);
+			m_storage->sortByTime(order == Qt::AscendingOrder);
 			break;
 	}
+}
 
+void MongoEventModel::onBeginChange()
+{
+	beginResetModel();
+}
+
+void MongoEventModel::onEndChange()
+{
 	endResetModel();
 }
-
-void MongoEventModel::sortByMessage(bool acsending)
-{
-	if (acsending)
-	{
-		qSort(m_events.begin(), m_events.end(), MongoEventData::acsByMessage);
-	}
-	else
-	{
-		qSort(m_events.begin(), m_events.end(), MongoEventData::decsByMessage);
-	}
-}
-
-void MongoEventModel::sortByTime(bool acsending)
-{
-	if (acsending)
-	{
-		qSort(m_events.begin(), m_events.end(), MongoEventData::acsByTime);
-	}
-	else
-	{
-		qSort(m_events.begin(), m_events.end(), MongoEventData::decsByTime);
-	}
-}
-

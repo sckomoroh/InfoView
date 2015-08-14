@@ -152,6 +152,7 @@
     <ClInclude Include="GeneratedFiles\ui_MongoWidget.h" />
     <ClInclude Include="IMongoEventParserListener.h" />
     <ClInclude Include="IMongoJobParserListener.h" />
+    <ClInclude Include="IMongoStorageListener.h" />
     <ClInclude Include="IPlugin.h" />
     <ClInclude Include="MongoEventData.h" />
     <ClInclude Include="MongoEventParser.h" />

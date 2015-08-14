@@ -14,6 +14,8 @@ MongoEventParser::MongoEventParser()
 {
 	m_pStorage = new MongoEventStorage;
 
+	addListener(m_pStorage);
+
 	if (m_events.isEmpty())
 	{
 		readEventsMap();

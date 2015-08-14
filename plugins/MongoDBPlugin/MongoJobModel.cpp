@@ -6,9 +6,10 @@ QImage MongoJobModel::m_success;
 QImage MongoJobModel::m_fail;
 QImage MongoJobModel::m_cancel;
 
-MongoJobModel::MongoJobModel(QObject *parent)
+MongoJobModel::MongoJobModel(MongoJobStorage* storage, QObject *parent)
 	: QAbstractItemModel(parent)
 	, m_pRootItem(NULL)
+	, m_storage(storage)
 {
 	m_pRootItem = MongoJobData::emptyObject();
 
@@ -26,35 +27,13 @@ MongoJobModel::MongoJobModel(QObject *parent)
 	{
 		m_cancel = QImage(":/plugin/images/Resources/cancel.png");
 	}
+
+	m_storage->addListener(this);
 }
 
 MongoJobModel::~MongoJobModel()
 {
 	delete m_pRootItem;
-}
-
-void MongoJobModel::reset()
-{
-	beginResetModel();
-
-	m_pRootItem->childJobs().clear();
-
-	endResetModel();
-}
-
-void MongoJobModel::setModelData(const QList<MongoJobData*>& content)
-{
-	beginResetModel();
-
-	m_pRootItem->childJobs().clear();
-
-	foreach(MongoJobData* pItem, content)
-	{
-		pItem->setParent(m_pRootItem);
-		m_pRootItem->childJobs().append(pItem);
-	}
-
-	endResetModel();
 }
 
 QModelIndex	MongoJobModel::index(int row, int column, const QModelIndex& parent/* = QModelIndex()*/) const
@@ -214,36 +193,30 @@ void MongoJobModel::sort(int column, Qt::SortOrder order)
 	switch (column)
 	{
 	case 0:
-		sortByMessage(order == Qt::AscendingOrder);
+		m_storage->sortByMessage(order == Qt::AscendingOrder);
 		break;
 	case 1:
-		sortByTime(order == Qt::AscendingOrder);
+		m_storage->sortByTime(order == Qt::AscendingOrder);
 		break;
 	}
 
 	endResetModel();
 }
 
-void MongoJobModel::sortByMessage(bool acsending)
+void MongoJobModel::onBeginChange()
 {
-	if (acsending)
-	{
-		qSort(m_pRootItem->childJobs().begin(), m_pRootItem->childJobs().end(), MongoJobData::acsByMessage);
-	}
-	else
-	{
-		qSort(m_pRootItem->childJobs().begin(), m_pRootItem->childJobs().end(), MongoJobData::decsByMessage);
-	}
+	beginResetModel();
 }
 
-void MongoJobModel::sortByTime(bool acsending)
+void MongoJobModel::onEndChange()
 {
-	if (acsending)
+	m_pRootItem->childJobs().clear();
+
+	foreach(MongoJobData* pItem, m_storage->filteredJobs())
 	{
-		qSort(m_pRootItem->childJobs().begin(), m_pRootItem->childJobs().end(), MongoJobData::acsByTime);
+		pItem->setParent(m_pRootItem);
+		m_pRootItem->childJobs().append(pItem);
 	}
-	else
-	{
-		qSort(m_pRootItem->childJobs().begin(), m_pRootItem->childJobs().end(), MongoJobData::decsByTime);
-	}
+
+	endResetModel();
 }

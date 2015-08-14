@@ -7,9 +7,12 @@
 #include <QImage>
 
 #include "MongoJobData.h"
+#include "MongoJobStorage.h"
+#include "IMongoStorageListener.h"
 
-
-class MongoJobModel : public QAbstractItemModel
+class MongoJobModel 
+	: public QAbstractItemModel
+	, IMongoStorageListener
 {
 	Q_OBJECT
 private:
@@ -18,15 +21,18 @@ private:
 	static QImage m_cancel;
 
 private:
-	MongoJobData*			m_pRootItem;
+	MongoJobData*		m_pRootItem;
+	MongoJobStorage*	m_storage;
 
 public:
-	MongoJobModel(QObject *parent);
+	MongoJobModel(MongoJobStorage* storage, QObject *parent);
 	~MongoJobModel();
 
-	void setModelData(const QList<MongoJobData*>& content);
+public:
+	virtual void onBeginChange();
+	virtual void onEndChange();
+
 	MongoJobData* rawData(const QModelIndex & index);
-	void reset();
 
 private:
 	// Implementing QAbstractItemModel
@@ -39,8 +45,6 @@ private:
 
 	virtual void 		sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
 
-	void	sortByMessage(bool acsending);
-	void	sortByTime(bool acsending);
 };
 
 #endif // MongoJobModel_H
