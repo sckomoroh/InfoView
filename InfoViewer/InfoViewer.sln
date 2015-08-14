@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InfoViewer", "InfoViewer.vcxproj", "{9760956C-7D94-4400-81E2-2F5EE951B0CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "plugins", "plugins", "{14AA8379-F797-4E42-AC7D-28D8633FD275}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dependency", "dependency", "{E7389964-B4B4-4CE7-946C-6E372673799D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MongoDBPlugin", "..\plugins\MongoDBPlugin\MongoDBPlugin.vcxproj", "{03819CDE-1EA4-4EC9-BDD5-D41AAA3F26F1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MsInfoPlugin", "..\plugins\MsInfoPlugin\MsInfoPlugin.vcxproj", "{5A84C456-3AB9-4A75-BA49-683C1881621E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RecoveryPointsPlugin", "..\plugins\RecoveryPointsPlugin\RecoveryPointsPlugin.vcxproj", "{3FBB867D-327C-4665-922D-EA4766581EF8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SystemEventsPlugin", "..\plugins\SystemEventsPlugin\SystemEventsPlugin.vcxproj", "{09DDAB69-2C36-4DB7-95C6-DA8249E7D7C0}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinRegPlugin", "..\plugins\WinRegPlugin\WinRegPlugin.vcxproj", "{DF7A155E-80FC-48DE-A5EC-7BB5603A4B28}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "unzip_dll", "..\dependency\unzip_dll\unzip_dll.vcxproj", "{B5B226B4-4236-42A6-B8B5-96E8DBA756EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9760956C-7D94-4400-81E2-2F5EE951B0CB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9760956C-7D94-4400-81E2-2F5EE951B0CB}.Debug|Win32.Build.0 = Debug|Win32
+		{9760956C-7D94-4400-81E2-2F5EE951B0CB}.Release|Win32.ActiveCfg = Release|Win32
+		{9760956C-7D94-4400-81E2-2F5EE951B0CB}.Release|Win32.Build.0 = Release|Win32
+		{03819CDE-1EA4-4EC9-BDD5-D41AAA3F26F1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{03819CDE-1EA4-4EC9-BDD5-D41AAA3F26F1}.Debug|Win32.Build.0 = Debug|Win32
+		{03819CDE-1EA4-4EC9-BDD5-D41AAA3F26F1}.Release|Win32.ActiveCfg = Release|Win32
+		{03819CDE-1EA4-4EC9-BDD5-D41AAA3F26F1}.Release|Win32.Build.0 = Release|Win32
+		{5A84C456-3AB9-4A75-BA49-683C1881621E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5A84C456-3AB9-4A75-BA49-683C1881621E}.Debug|Win32.Build.0 = Debug|Win32
+		{5A84C456-3AB9-4A75-BA49-683C1881621E}.Release|Win32.ActiveCfg = Release|Win32
+		{5A84C456-3AB9-4A75-BA49-683C1881621E}.Release|Win32.Build.0 = Release|Win32
+		{3FBB867D-327C-4665-922D-EA4766581EF8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3FBB867D-327C-4665-922D-EA4766581EF8}.Debug|Win32.Build.0 = Debug|Win32
+		{3FBB867D-327C-4665-922D-EA4766581EF8}.Release|Win32.ActiveCfg = Release|Win32
+		{3FBB867D-327C-4665-922D-EA4766581EF8}.Release|Win32.Build.0 = Release|Win32
+		{09DDAB69-2C36-4DB7-95C6-DA8249E7D7C0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{09DDAB69-2C36-4DB7-95C6-DA8249E7D7C0}.Debug|Win32.Build.0 = Debug|Win32
+		{09DDAB69-2C36-4DB7-95C6-DA8249E7D7C0}.Release|Win32.ActiveCfg = Release|Win32
+		{09DDAB69-2C36-4DB7-95C6-DA8249E7D7C0}.Release|Win32.Build.0 = Release|Win32
+		{DF7A155E-80FC-48DE-A5EC-7BB5603A4B28}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DF7A155E-80FC-48DE-A5EC-7BB5603A4B28}.Debug|Win32.Build.0 = Debug|Win32
+		{DF7A155E-80FC-48DE-A5EC-7BB5603A4B28}.Release|Win32.ActiveCfg = Release|Win32
+		{DF7A155E-80FC-48DE-A5EC-7BB5603A4B28}.Release|Win32.Build.0 = Release|Win32
+		{B5B226B4-4236-42A6-B8B5-96E8DBA756EF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B5B226B4-4236-42A6-B8B5-96E8DBA756EF}.Debug|Win32.Build.0 = Debug|Win32
+		{B5B226B4-4236-42A6-B8B5-96E8DBA756EF}.Release|Win32.ActiveCfg = Release|Win32
+		{B5B226B4-4236-42A6-B8B5-96E8DBA756EF}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{03819CDE-1EA4-4EC9-BDD5-D41AAA3F26F1} = {14AA8379-F797-4E42-AC7D-28D8633FD275}
+		{5A84C456-3AB9-4A75-BA49-683C1881621E} = {14AA8379-F797-4E42-AC7D-28D8633FD275}
+		{3FBB867D-327C-4665-922D-EA4766581EF8} = {14AA8379-F797-4E42-AC7D-28D8633FD275}
+		{09DDAB69-2C36-4DB7-95C6-DA8249E7D7C0} = {14AA8379-F797-4E42-AC7D-28D8633FD275}
+		{DF7A155E-80FC-48DE-A5EC-7BB5603A4B28} = {14AA8379-F797-4E42-AC7D-28D8633FD275}
+		{B5B226B4-4236-42A6-B8B5-96E8DBA756EF} = {E7389964-B4B4-4CE7-946C-6E372673799D}
+	EndGlobalSection
+EndGlobal

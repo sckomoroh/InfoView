@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug">
+      <UniqueIdentifier>{25c4997b-35fc-49ee-a3d8-f0df64878cda}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release">
+      <UniqueIdentifier>{d3a44358-4c9c-4c29-ac1b-9375b7840b47}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="plugin">
+      <UniqueIdentifier>{ec82b385-56a2-44f3-9bb4-87374536242b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="widget">
+      <UniqueIdentifier>{5a68bda5-39fa-4806-a8bd-424179495326}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="widget\headers">
+      <UniqueIdentifier>{44d20907-c6e2-4432-813a-8ac32a9c776f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="widget\sources">
+      <UniqueIdentifier>{aec4fa66-c1d6-429a-ac5c-bd11e315221d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="plugin\headers">
+      <UniqueIdentifier>{ef794b6c-bacc-4a65-826e-0dba4b257fa7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="plugin\sources">
+      <UniqueIdentifier>{505e26ed-b258-42fe-ae67-bc3969977635}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GeneratedFiles\Debug\moc_SystemEventModel.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_SystemEventModel.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_SystemEventPageWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_SystemEventPageWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_SystemEventParserThread.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_SystemEventParserThread.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_SystemEventWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_SystemEventWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_ProviderModel.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_ProviderModel.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="systemeventsplugin.cpp">
+      <Filter>plugin\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ProviderData.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemEventWidget.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ProviderModel.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemEventData.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemEventModel.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemEventPageWidget.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemEventParser.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemEventParserThread.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemEventStorage.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\qrc_plugin.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GeneratedFiles\ui_SystemEventPageWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_SystemEventWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="systemeventsplugin.h">
+      <Filter>plugin\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="systemeventsplugin_global.h">
+      <Filter>plugin\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ISystemEventParserListener.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ProviderData.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemEventData.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemEventParser.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemEventStorage.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IPlugin.h">
+      <Filter>plugin\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IStorageListener.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="SystemEventPageWidget.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="SystemEventWidget.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="SystemEventWidget.h">
+      <Filter>widget\headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ProviderModel.h">
+      <Filter>widget\headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="SystemEventModel.h">
+      <Filter>widget\headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="SystemEventPageWidget.h">
+      <Filter>widget\headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="SystemEventParserThread.h">
+      <Filter>widget\headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="plugin.qrc">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

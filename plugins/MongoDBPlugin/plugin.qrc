@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/plugin/images">
+        <file>Resources/mongo.png</file>
+        <file>Resources/cancel.png</file>
+        <file>Resources/error.png</file>
+        <file>Resources/fail.png</file>
+        <file>Resources/information.png</file>
+        <file>Resources/question.png</file>
+        <file>Resources/success.png</file>
+        <file>Resources/warning.png</file>
+        <file>Resources/apply.png</file>
+    </qresource>
+</RCC>

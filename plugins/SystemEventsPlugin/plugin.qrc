@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/plugin/images">
+        <file>Resources/sysevent.png</file>
+        <file>Resources/apply.png</file>
+        <file>Resources/selectAll.png</file>
+        <file>Resources/unselectAll.png</file>
+        <file>Resources/critical.png</file>
+        <file>Resources/error.png</file>
+        <file>Resources/information.png</file>
+        <file>Resources/logAlways.png</file>
+        <file>Resources/question.png</file>
+        <file>Resources/verbose.png</file>
+        <file>Resources/warning.png</file>
+    </qresource>
+</RCC>

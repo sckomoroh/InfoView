@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/plugin/images">
+        <file>Resources/GrayBall.png</file>
+        <file>Resources/GreenBall.png</file>
+        <file>Resources/RedBall.png</file>
+        <file>Resources/rp.png</file>
+        <file>Resources/YellowBall.png</file>
+        <file>Resources/Computer.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,4 @@
+LIBRARY	"unzip_dll"
+
+EXPORTS
+	getZipInstance	@1

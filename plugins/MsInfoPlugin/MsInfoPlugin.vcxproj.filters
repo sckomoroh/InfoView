@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug">
+      <UniqueIdentifier>{754ebdac-40e3-433a-b0da-19ac84d30f3c}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release">
+      <UniqueIdentifier>{0f2d5261-bed9-4d56-86d5-111174f88f79}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="widget">
+      <UniqueIdentifier>{b9a7a552-30a8-4dd5-b337-aaa0dbb9c655}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="plugin">
+      <UniqueIdentifier>{61bd70e1-13b9-4b7d-8514-038ff1c821f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="plugin\headers">
+      <UniqueIdentifier>{a284c328-4ab5-49a7-b267-a450ab4f2c93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="plugin\sources">
+      <UniqueIdentifier>{9e501078-5763-4e73-8b6d-17572cf0b4f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="widget\headers">
+      <UniqueIdentifier>{126d45a2-2ac4-4509-9a75-63e6c0f805d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="widget\sources">
+      <UniqueIdentifier>{457d60f6-2393-4790-b8ff-4d5e5fc834f1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MsInfoWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MsInfoWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MsInfoCategoryModel.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MsInfoCategoryModel.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MsInfoDetailModel.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MsInfoDetailModel.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MsInfoParserThread.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MsInfoParserThread.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="msinfoplugin.cpp">
+      <Filter>plugin\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MsInfoCategory.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MsInfoWidget.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MsInfoCategoryModel.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MsInfoDetail.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MsInfoDetailModel.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MsInfoParser.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MsInfoParserThread.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MsInfoStorage.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\qrc_plugin.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GeneratedFiles\ui_MsInfoWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IPlugin.h">
+      <Filter>plugin\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="msinfoplugin.h">
+      <Filter>plugin\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="msinfoplugin_global.h">
+      <Filter>plugin\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IMsInfoParserListener.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MsInfoCategory.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MsInfoDetail.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MsInfoParser.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MsInfoStorage.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="MsInfoWidget.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MsInfoWidget.h">
+      <Filter>widget\headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MsInfoCategoryModel.h">
+      <Filter>widget\headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MsInfoDetailModel.h">
+      <Filter>widget\headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MsInfoParserThread.h">
+      <Filter>widget\headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="plugin.qrc">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

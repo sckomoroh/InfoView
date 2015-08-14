@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="plugin">
+      <UniqueIdentifier>{7482b48b-f6dd-4045-b31e-dffe6c3fe5f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="plugin\headers">
+      <UniqueIdentifier>{09d9ac55-07ba-4c26-9b26-cc42f768dedb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="plugin\sources">
+      <UniqueIdentifier>{4ee4be3d-c701-4666-badf-ad08a6d080c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="widget">
+      <UniqueIdentifier>{f3b9f730-03a7-4ffd-ba3e-1c6c54e13aa3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="widget\headers">
+      <UniqueIdentifier>{1a3d7b24-05e0-4ead-b660-1a039b9cf9e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="widget\sources">
+      <UniqueIdentifier>{61ac6f67-ea48-4cc2-95ae-1e0da1264806}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Generated Files\Debug">
+      <UniqueIdentifier>{a866ac12-cde0-46bc-ba6e-e1334bb75d7f}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release">
+      <UniqueIdentifier>{2f299923-41e7-4321-ac5e-f044df299c0c}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="mongodbplugin.h">
+      <Filter>plugin\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="mongodbplugin_global.h">
+      <Filter>plugin\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IPlugin.h">
+      <Filter>plugin\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MongoEventData.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MongoEventParser.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MongoEventStorage.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MongoJobData.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MongoJobParser.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MongoJobStorage.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_MongoEventWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_MongoJobWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_MongoWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BsonDocument.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BsonDocumentSet.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BsonElement.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IMongoEventParserListener.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IMongoJobParserListener.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="mongodbplugin.cpp">
+      <Filter>plugin\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MognoJobParserThread.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MognoJobParserThread.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MongoEventModel.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MongoEventModel.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MongoEventParserThread.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MongoEventParserThread.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MongoEventWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MongoEventWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MongoJobModel.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MongoJobModel.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MongoJobWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MongoJobWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MongoWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MongoWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="MongoEventData.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MongoEventModel.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MongoEventParser.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MongoEventParserThread.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MongoEventStorage.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MongoEventWidget.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MongoJobData.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MongoJobModel.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MongoJobParser.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MongoJobParserThread.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MongoJobStorage.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MongoJobWidget.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MongoWidget.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="BsonDocument.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="BsonDocumentSet.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="BsonElement.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\qrc_plugin.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="MognoJobParserThread.h">
+      <Filter>widget\headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MongoEventModel.h">
+      <Filter>widget\headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MongoEventParserThread.h">
+      <Filter>widget\headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MongoEventWidget.h">
+      <Filter>widget\headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MongoJobModel.h">
+      <Filter>widget\headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MongoJobWidget.h">
+      <Filter>widget\headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MongoWidget.h">
+      <Filter>widget\headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MongoEventWidget.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MongoJobWidget.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MongoWidget.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="plugin.qrc">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

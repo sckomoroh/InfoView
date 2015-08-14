@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug">
+      <UniqueIdentifier>{e4e0e197-a74d-4140-8f42-aafa3d90ef8a}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release">
+      <UniqueIdentifier>{889677db-524a-4c40-8b12-3f7da9e9f821}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="plugin">
+      <UniqueIdentifier>{84d763f4-b61e-488e-bb80-5c953538b5b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="widget">
+      <UniqueIdentifier>{1b9b6731-b2d4-4148-866c-2aa394c3dcab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="widget\headers">
+      <UniqueIdentifier>{ba4faf71-e55b-4277-839c-e7590f9f0669}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="widget\sources">
+      <UniqueIdentifier>{8010a0e1-3992-4922-9ddd-3f35b7928028}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="plugin\headers">
+      <UniqueIdentifier>{c94fb848-3d27-4db8-b76c-e825cdbd4533}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="plugin\sources">
+      <UniqueIdentifier>{a5c3a174-22a0-43fd-8bca-ac74eca44a9a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GeneratedFiles\Debug\moc_RecoveryPointsParserThread.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_RecoveryPointsParserThread.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_RecoveryPointsWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_RecoveryPointsWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_AgentsTreeModel.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_AgentsTreeModel.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_exchangetreemodel.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_exchangetreemodel.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_sqltreemodel.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_sqltreemodel.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="recoverypointsplugin.cpp">
+      <Filter>plugin\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="AgentModelItem.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="VolumeModelItem.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="AgentsTreeModel.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseModelItem.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CheckStates.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Exchange.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ExchangeBaseModelItem.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ExchangeDatabaseModelItem.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="exchangetreemodel.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LegacyMailStore.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LegacyStorageGroup.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MailStore.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="RecoveryPointModelItem.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="RecoveryPointRecord.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="RecoveryPointsParser.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="RecoveryPointsParserThread.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="RecoveryPointsStorage.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="RecoveryPointsWidget.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SqlBaseModelItem.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SqlDatabase.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SqlDatabaseModelItem.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SqlDataFile.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SqlFileGroup.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SqlInstance.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="SqlLogFile.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="sqltreemodel.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Volume.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="VolumeImageSummary.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\qrc_plugin.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GeneratedFiles\ui_RecoveryPointsWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="recoverypointsplugin.h">
+      <Filter>plugin\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="recoverypointsplugin_global.h">
+      <Filter>plugin\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="AgentModelItem.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="VolumeModelItem.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseModelItem.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckStates.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Exchange.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ExchangeBaseModelItem.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ExchangeDatabaseModelItem.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IRecoveryPointsParserListener.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LegacyMailStore.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LegacyStorageGroup.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MailStore.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="RecoveryPointModelItem.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="RecoveryPointRecord.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="RecoveryPointsParser.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="RecoveryPointsStorage.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SqlBaseModelItem.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SqlDatabase.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SqlDatabaseModelItem.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SqlDataFile.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SqlFileGroup.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SqlInstance.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SqlLogFile.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Volume.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="VolumeImageSummary.h">
+      <Filter>widget\headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IPlugin.h">
+      <Filter>plugin\headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="RecoveryPointsWidget.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="AgentsTreeModel.h">
+      <Filter>widget\headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="exchangetreemodel.h">
+      <Filter>widget\headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="RecoveryPointsParserThread.h">
+      <Filter>widget\headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="RecoveryPointsWidget.h">
+      <Filter>widget\headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="sqltreemodel.h">
+      <Filter>widget\headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="plugin.qrc">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;cxx;c;def</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug">
+      <UniqueIdentifier>{bc2737fc-40ab-447e-bd19-611560d44493}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release">
+      <UniqueIdentifier>{4c505a1b-d9f9-4f23-86c6-88d97dd6b56e}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Header Files\Amazon">
+      <UniqueIdentifier>{aa78dae8-70dd-4a1c-a3ce-9d59a43ade02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\CustomTextView">
+      <UniqueIdentifier>{320f6e48-7aab-4abf-9bef-f32a112bfe15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Logger">
+      <UniqueIdentifier>{b3d1a725-b013-455e-bc7c-a9621d846df2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Unzip">
+      <UniqueIdentifier>{7af07141-d66e-4fd3-bbed-7817bb81e37d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\LogParser">
+      <UniqueIdentifier>{07f55b8a-a326-4ec4-a545-eff81c1107fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\SearchAll">
+      <UniqueIdentifier>{ec128b52-998a-40d8-9ab0-37bf911bd8e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Amazon">
+      <UniqueIdentifier>{24a95264-31ca-4136-a763-f7e7e083c11b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\CustomTextView">
+      <UniqueIdentifier>{cbbb3067-65d5-4842-aef4-ea40a6d33162}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Logger">
+      <UniqueIdentifier>{585dce54-57e3-4456-ab17-4f86bf1ce97d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\LogParser">
+      <UniqueIdentifier>{5768fc1b-07f0-4810-bca7-f571dcb2dbf0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SearchAll">
+      <UniqueIdentifier>{55da2a8d-001d-42c0-9246-38874cd6b06b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Unzip">
+      <UniqueIdentifier>{d0bbb502-e187-4306-94f0-f834ffa88533}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\qrc_infoviewer.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_Amazon.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_Amazon.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_AmazonDownloadDialog.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_AmazonDownloadDialog.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_BucketModel.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_BucketModel.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CustomTextViewModel.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CustomTextViewModel.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CustomTextViewWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CustomTextViewWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_logparserthread.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_logparserthread.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_LogViewForm.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_LogViewForm.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MainWindow.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MainWindow.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_SearchResultWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_SearchResultWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_UnZipThread.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_UnZipThread.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Amazon.cpp">
+      <Filter>Source Files\Amazon</Filter>
+    </ClCompile>
+    <ClCompile Include="amazon_utils_c.cpp">
+      <Filter>Source Files\Amazon</Filter>
+    </ClCompile>
+    <ClCompile Include="AmazonAuthHelper.cpp">
+      <Filter>Source Files\Amazon</Filter>
+    </ClCompile>
+    <ClCompile Include="AmazonDownloadDialog.cpp">
+      <Filter>Source Files\Amazon</Filter>
+    </ClCompile>
+    <ClCompile Include="BucketModel.cpp">
+      <Filter>Source Files\Amazon</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomTextViewLine.cpp">
+      <Filter>Source Files\CustomTextView</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomTextViewWidget.cpp">
+      <Filter>Source Files\CustomTextView</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomTextViewModel.cpp">
+      <Filter>Source Files\CustomTextView</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomTextViewSearchLine.cpp">
+      <Filter>Source Files\CustomTextView</Filter>
+    </ClCompile>
+    <ClCompile Include="FileLogger.cpp">
+      <Filter>Source Files\Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="LogManager.cpp">
+      <Filter>Source Files\Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="LogLineData.cpp">
+      <Filter>Source Files\LogParser</Filter>
+    </ClCompile>
+    <ClCompile Include="LogParser.cpp">
+      <Filter>Source Files\LogParser</Filter>
+    </ClCompile>
+    <ClCompile Include="LogParserThread.cpp">
+      <Filter>Source Files\LogParser</Filter>
+    </ClCompile>
+    <ClCompile Include="LogStorage.cpp">
+      <Filter>Source Files\LogParser</Filter>
+    </ClCompile>
+    <ClCompile Include="LogViewForm.cpp">
+      <Filter>Source Files\LogParser</Filter>
+    </ClCompile>
+    <ClCompile Include="UnZipThread.cpp">
+      <Filter>Source Files\Unzip</Filter>
+    </ClCompile>
+    <ClCompile Include="SearchLineData.cpp">
+      <Filter>Source Files\SearchAll</Filter>
+    </ClCompile>
+    <ClCompile Include="SearchResultWidget.cpp">
+      <Filter>Source Files\SearchAll</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="infoviewer.qrc">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MainWindow.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="AmazonDownloadDialog.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="LogViewForm.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MainWindow.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="SearchResultWidget.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Amazon.h">
+      <Filter>Header Files\Amazon</Filter>
+    </CustomBuild>
+    <CustomBuild Include="AmazonDownloadDialog.h">
+      <Filter>Header Files\Amazon</Filter>
+    </CustomBuild>
+    <CustomBuild Include="BucketModel.h">
+      <Filter>Header Files\Amazon</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CustomTextViewModel.h">
+      <Filter>Header Files\CustomTextView</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CustomTextViewWidget.h">
+      <Filter>Header Files\CustomTextView</Filter>
+    </CustomBuild>
+    <CustomBuild Include="UnZipThread.h">
+      <Filter>Header Files\Unzip</Filter>
+    </CustomBuild>
+    <CustomBuild Include="LogViewForm.h">
+      <Filter>Header Files\LogParser</Filter>
+    </CustomBuild>
+    <CustomBuild Include="SearchResultWidget.h">
+      <Filter>Header Files\SearchAll</Filter>
+    </CustomBuild>
+    <CustomBuild Include="logparserthread.h">
+      <Filter>Header Files\LogParser</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GeneratedFiles\ui_AmazonDownloadDialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_LogViewForm.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_SearchResultWidget.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IPlugin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="amazon_utils_c.h">
+      <Filter>Header Files\Amazon</Filter>
+    </ClInclude>
+    <ClInclude Include="AmazonAuthHelper.h">
+      <Filter>Header Files\Amazon</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomTextViewLine.h">
+      <Filter>Header Files\CustomTextView</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomTextViewSearchLine.h">
+      <Filter>Header Files\CustomTextView</Filter>
+    </ClInclude>
+    <ClInclude Include="FileLogger.h">
+      <Filter>Header Files\Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="ILogger.h">
+      <Filter>Header Files\Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="LogManager.h">
+      <Filter>Header Files\Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="IZip.h">
+      <Filter>Header Files\Unzip</Filter>
+    </ClInclude>
+    <ClInclude Include="ILogParserListener.h">
+      <Filter>Header Files\LogParser</Filter>
+    </ClInclude>
+    <ClInclude Include="LogLineData.h">
+      <Filter>Header Files\LogParser</Filter>
+    </ClInclude>
+    <ClInclude Include="LogParser.h">
+      <Filter>Header Files\LogParser</Filter>
+    </ClInclude>
+    <ClInclude Include="LogStorage.h">
+      <Filter>Header Files\LogParser</Filter>
+    </ClInclude>
+    <ClInclude Include="SearchAllData.h">
+      <Filter>Header Files\SearchAll</Filter>
+    </ClInclude>
+    <ClInclude Include="SearchLineData.h">
+      <Filter>Header Files\SearchAll</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
