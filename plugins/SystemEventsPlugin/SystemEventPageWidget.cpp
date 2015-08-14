@@ -176,8 +176,8 @@ void SystemEventPageWidget::onFilterApplyClicked()
 
 void SystemEventPageWidget::reset()
 {
-	m_pProvidersModel->reset();
-	m_pModel->reset();
+	//m_pProvidersModel->reset();
+	//m_pModel->reset();
 
 	ui.eventIdLineEdit->setText("");
 	ui.creationTimeLineEdit->setText("");
