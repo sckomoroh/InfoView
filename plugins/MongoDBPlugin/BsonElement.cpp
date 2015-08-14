@@ -16,13 +16,13 @@ BsonElement::~BsonElement(void)
 {
 	delete[] m_sName;
 
-	if (m_valueType == BsonType::Array || m_valueType == BsonType::BinaryData)
+	if (m_valueType == BsonElement::Array || m_valueType == BsonElement::BinaryData)
 	{
 		delete m_value.m_binaryData;
 		return;
 	}
 
-	if (m_valueType == BsonType::Utf8String)
+	if (m_valueType == BsonElement::Utf8String)
 	{
 		delete m_value.m_utfStrData;
 	}
@@ -30,7 +30,7 @@ BsonElement::~BsonElement(void)
 
 bool BsonElement::isArray()
 {
-	return m_valueType == BsonType::Array;
+	return m_valueType == BsonElement::Array;
 }
 
 char* BsonElement::name()
@@ -63,7 +63,7 @@ UInt BsonElement::parseElement(UChar* sDocBuffer)
 	UInt nNameLenght = strlen(m_sName);
 	UInt nValueSize = parseValue(sDocBuffer);
 
-	if (m_valueType == BsonType::Array)
+	if (m_valueType == BsonElement::Array)
 	{
 		UInt valueOffset = 1 /*Type*/ + nNameLenght + 1/*Zero-end string*/;
 		BsonDocument* pTempDocument = new BsonDocument(sDocBuffer + valueOffset, nValueSize - 4 - 4);
@@ -83,12 +83,12 @@ void BsonElement::parseElementName(UChar* sDocBuffer)
 	strcpy_s(m_sName, nNameSize + 1, (char*)(sDocBuffer + 1));
 }
 
-BsonType BsonElement::valueType()
+BsonElement::BsonType BsonElement::valueType()
 {
 	return m_valueType;
 }
 
-BsonBinarySubtype BsonElement::valueSubType()
+BsonElement::BsonBinarySubtype BsonElement::valueSubType()
 {
 	return m_valueSubType;
 }
@@ -125,7 +125,7 @@ Int64 BsonElement::asInt64()
 
 bool BsonElement::isNull()
 {
-	return m_valueType == BsonType::NullValue;
+	return m_valueType == BsonElement::NullValue;
 }
 
 UInt BsonElement::parseValue(UChar* sBuffer)

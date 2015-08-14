@@ -25,7 +25,7 @@ void MongoJobStorage::addItem(MongoJobData* pItem)
 	m_jobs.append(pItem);
 }
 
-QList<MongoJobData*> MongoJobStorage::filteredJob(MongoJobType jobType, const QString& filterString)
+QList<MongoJobData*> MongoJobStorage::filteredJob(MongoJobData::MongoJobType jobType, const QString& filterString)
 {
 	QList<MongoJobData*> result;
 

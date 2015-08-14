@@ -6,11 +6,34 @@
 #include "Volume.h"
 #include "SqlDatabaseModelItem.h"
 
+QImage SqlTreeModel::m_redBall;
+QImage SqlTreeModel::m_yellowBall;
+QImage SqlTreeModel::m_grayBall;
+QImage SqlTreeModel::m_greenBall;
+
 SqlTreeModel::SqlTreeModel(QObject *parent)
 	: QAbstractItemModel(parent)
 	, m_pRootItem(NULL)
 {
-	qDebug() << "\tCreating SQL TREE MODEL";
+	if (m_redBall.isNull())
+	{
+		m_redBall = QImage(":/plugin/images/Resources/RedBall.png");
+	}
+
+	if (m_yellowBall.isNull())
+	{
+		m_yellowBall = QImage(":/plugin/images/Resources/YellowBall.png");
+	}
+
+	if (m_grayBall.isNull())
+	{
+		m_grayBall = QImage(":/plugin/images/Resources/GrayBall.png");
+	}
+
+	if (m_greenBall.isNull())
+	{
+		m_greenBall = QImage(":/plugin/images/Resources/GreenBall.png");
+	}
 }
 
 SqlTreeModel::~SqlTreeModel()
@@ -208,15 +231,15 @@ QVariant SqlTreeModel::databaseModelItemData(SqlDatabaseModelItem* pSqlDatabaseM
 	{
 		switch (pSqlDatabaseModelItem->checkState())
 		{
-			case CheckState::Yellow:
-				return QImage(":/plugin/images/Resources/YellowBall.png");
-			case CheckState::Red:
-				return QImage(":/plugin/images/Resources/RedBall.png");
-			case CheckState::Green:
-				return QImage(":/plugin/images/Resources/GreenBall.png");
+			case CheckStatesParser::Yellow:
+				return m_yellowBall;
+			case CheckStatesParser::Red:
+				return m_redBall;
+			case CheckStatesParser::Green:
+				return m_greenBall;
 		}
 
-		return QImage(":/plugin/images/Resources/GrayBall.png");
+		return m_grayBall;
 	}
 
 	return QVariant();

@@ -4,16 +4,18 @@
 
 class RegParser;
 
-enum RegValueDataType
-{
-	RegString,
-	RegDWord,
-	RegBinary,
-	RegUnknown
-};
 
 class RegValueData
 {
+public:
+	enum RegValueDataType
+	{
+		RegString,
+		RegDWord,
+		RegBinary,
+		RegUnknown
+	};
+
 private:
 	QString m_valueName;
 	QString m_value;

@@ -5,18 +5,20 @@
 
 #include "BsonDocument.h"
 
-enum EventLevel
-{
-	EventWarning		= 0x1,
-	EventError			= 0x2,
-	EventInformation	= 0x4,
-	EventUnknown		= 0x8,
-	EventAlert			= 0x10,
-	EventEvent			= 0x20
-};
 
 class MongoEventData
 {
+public:
+	enum EventLevel
+	{
+		EventWarning		= 0x1,
+		EventError			= 0x2,
+		EventInformation	= 0x4,
+		EventUnknown		= 0x8,
+		EventAlert			= 0x10,
+		EventEvent			= 0x20
+	};
+
 private:
 	QString		m_message;
 	QDateTime	m_time;

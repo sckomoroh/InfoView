@@ -297,6 +297,7 @@
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Rcc%27ing %(Identity)...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\qrc_%(Filename).cpp;%(Outputs)</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\rcc.exe" -name "%(Filename)" -no-compress "%(FullPath)" -o .\GeneratedFiles\qrc_%(Filename).cpp</Command>
+      <SubType>Designer</SubType>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -353,9 +354,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\dependency\unzip_dll\unzip_dll.vcxproj">
-      <Project>{b5b226b4-4236-42a6-b8b5-96e8dba756ef}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\unzip_dll\unzip_dll.vcxproj">
       <Project>{b5b226b4-4236-42a6-b8b5-96e8dba756ef}</Project>
     </ProjectReference>
   </ItemGroup>

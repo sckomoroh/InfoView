@@ -13,8 +13,6 @@ MongoEventWidget::MongoEventWidget(QWidget *parent)
 	ui.treeView->setModel(m_pEventsModel);
 	ui.loadingProgressBar->hide();
 
-	//ui.applyPushButton->setIcon(QIcon(":/plugin/images/Resources/success.png"));
-
 	connect(
 		m_pEventsParserThread,
 		SIGNAL(startParsing()),
@@ -87,27 +85,27 @@ void MongoEventWidget::onApplyButtonClicked()
 	int iFilteredFlags = 0;
 	if (ui.alertsCheckBox->isChecked())
 	{
-		iFilteredFlags |= EventLevel::EventAlert;
+		iFilteredFlags |= MongoEventData::EventAlert;
 	}
 
 	if (ui.errorCheckBox->isChecked())
 	{
-		iFilteredFlags |= EventLevel::EventError;
+		iFilteredFlags |= MongoEventData::EventError;
 	}
 
 	if (ui.eventsCheckBox->isChecked())
 	{
-		iFilteredFlags |= EventLevel::EventEvent;
+		iFilteredFlags |= MongoEventData::EventEvent;
 	}
 
 	if (ui.infoCheckBox->isChecked())
 	{
-		iFilteredFlags |= EventLevel::EventInformation;
+		iFilteredFlags |= MongoEventData::EventInformation;
 	}
 
 	if (ui.warningCheckBox->isChecked())
 	{
-		iFilteredFlags |= EventLevel::EventWarning;
+		iFilteredFlags |= MongoEventData::EventWarning;
 	}
 
 	result = m_pEventsParserThread->parser()->storage()->filteredEvents(filterString, iFilteredFlags);

@@ -93,7 +93,7 @@ QVariant RegValueModel::headerData(int section, Qt::Orientation orientation, int
 		return QVariant();
 	}
 
-	if (orientation == Qt::Orientation::Horizontal)
+	if (orientation == Qt::Horizontal)
 	{
 		if (section < 3)
 		{

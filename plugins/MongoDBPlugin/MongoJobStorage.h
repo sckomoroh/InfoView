@@ -32,5 +32,5 @@ public:
 	void clear();
 	void addItem(MongoJobData* pItem);
 
-	QList<MongoJobData*> filteredJob(MongoJobType jotType, const QString& filterString);
+	QList<MongoJobData*> filteredJob(MongoJobData::MongoJobType jotType, const QString& filterString);
 };

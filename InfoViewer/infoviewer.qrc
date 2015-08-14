@@ -1,32 +1,10 @@
 <RCC>
-  <qresource prefix="/InfoViewer">
-    <file>images/YellowBall.png</file>
-    <file>images/warning.png</file>
-    <file>images/verbose.png</file>
-    <file>images/success.png</file>
-    <file>images/RedBall.png</file>
-    <file>images/logAlways.png</file>
-    <file>images/information.png</file>
-    <file>images/GreenBall.png</file>
-    <file>images/GrayBall.png</file>
-    <file>images/fail.png</file>
-    <file>images/error.png</file>
-    <file>images/critical.png</file>
-    <file>images/Computer.png</file>
-    <file>images/cancel.png</file>
-    <file>images/open.png</file>
-    <file>images/registry.png</file>
-    <file>images/rp.png</file>
-    <file>images/mongo.png</file>
-    <file>images/msinfo.png</file>
-    <file>images/sysevent.png</file>
-    <file>images/apply.png</file>
-    <file>images/clear.png</file>
-    <file>images/search.png</file>
-    <file>images/question.png</file>
-    <file>images/selectAll.png</file>
-    <file>images/unselectAll.png</file>
-    <file>images/searchAll.png</file>
-    <file>images/download.png</file>
-  </qresource>
+    <qresource prefix="/InfoViewer">
+        <file>images/open.png</file>
+        <file>images/apply.png</file>
+        <file>images/clear.png</file>
+        <file>images/search.png</file>
+        <file>images/searchAll.png</file>
+        <file>images/download.png</file>
+    </qresource>
 </RCC>

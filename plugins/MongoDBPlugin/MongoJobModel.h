@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QAbstractItemModel>
 #include <QList>
+#include <QImage>
 
 #include "MongoJobData.h"
 
@@ -11,6 +12,11 @@
 class MongoJobModel : public QAbstractItemModel
 {
 	Q_OBJECT
+private:
+	static QImage m_success;
+	static QImage m_fail;
+	static QImage m_cancel;
+
 private:
 	MongoJobData*			m_pRootItem;
 

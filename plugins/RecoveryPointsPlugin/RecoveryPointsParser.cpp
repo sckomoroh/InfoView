@@ -209,7 +209,7 @@ VolumeImageSummary* RecoveryPointsParser::parseVolumeImageSummary(const QDomElem
 	imageSummary->m_guidName = element.firstChildElement("volumeName").firstChildElement("guidName").text();
 	imageSummary->m_displayName = element.firstChildElement("volumeName").firstChildElement("displayName").text();
 	imageSummary->m_timestamp = QDateTime::fromString(element.firstChildElement("timeStamp").text(), Qt::ISODate);
-	imageSummary->m_state = (CheckState)CheckStatesParser::parseCheckState(element.firstChildElement("state").text());
+	imageSummary->m_state = (CheckStatesParser::CheckState)CheckStatesParser::parseCheckState(element.firstChildElement("state").text());
 
 	QString strSize = element.firstChildElement("size").text();
 	imageSummary->m_iSize = strSize.toLongLong();
@@ -281,7 +281,7 @@ MailStore* RecoveryPointsParser::parseMailStore(const QDomElement& element)
 
 	QString checkResults = element.firstChildElement("checkResults").firstChildElement("flags").text();
 
-	pMailStore->m_checkState = (CheckState)CheckStatesParser::parseCheckState(checkResults);
+	pMailStore->m_checkState = (CheckStatesParser::CheckState)CheckStatesParser::parseCheckState(checkResults);
 
 	return pMailStore;
 }
@@ -313,7 +313,7 @@ SqlDatabase* RecoveryPointsParser::parseSqlDatabase(const QDomElement& element)
 
 	QString sqlDatabaseCheckState = element.firstChildElement("checkResults").firstChildElement("flags").text();
 
-	pDatabase->m_checkState = (CheckState)CheckStatesParser::parseCheckState(sqlDatabaseCheckState);
+	pDatabase->m_checkState = (CheckStatesParser::CheckState)CheckStatesParser::parseCheckState(sqlDatabaseCheckState);
 	pDatabase->m_name = element.firstChildElement("name").text();
 
 	QDomNodeList logFiles = element.firstChildElement("logFiles").elementsByTagName("logFile");
@@ -400,7 +400,7 @@ LegacyMailStore* RecoveryPointsParser::parseLegacyMailStore(const QDomElement& e
 	QString checkResult = element.firstChildElement("checkResults").firstChildElement("flags").text();
 
 	pLegacyMailStore->m_name = element.firstChildElement("name").text();
-	pLegacyMailStore->m_checkState = (CheckState)CheckStatesParser::parseCheckState(checkResult);
+	pLegacyMailStore->m_checkState = (CheckStatesParser::CheckState)CheckStatesParser::parseCheckState(checkResult);
 	pLegacyMailStore->m_exchangeDatabasePath = element.firstChildElement("exchangeDatabasePath").text();
 	pLegacyMailStore->m_mailStoreType = element.firstChildElement("mailStoreType").text();
 

@@ -6,12 +6,12 @@
 class ExchangeDatabaseModelItem : public ExchangeBaseModelItem
 {
 private:
-	CheckState m_checkState;
+	CheckStatesParser::CheckState m_checkState;
 
 public:
-	ExchangeDatabaseModelItem(const QString& content, ExchangeBaseModelItem* pParent, CheckState checkState);
+	ExchangeDatabaseModelItem(const QString& content, ExchangeBaseModelItem* pParent, CheckStatesParser::CheckState checkState);
 	virtual ~ExchangeDatabaseModelItem();
 
-	CheckState checkState();
+	CheckStatesParser::CheckState checkState();
 };
 

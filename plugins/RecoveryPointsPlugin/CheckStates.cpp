@@ -17,17 +17,17 @@ int CheckStatesParser::parseCheckState(QString strCheck)
 
 		if (check == "PassedChecks" || check == "MountCheckPassed" || check == "ChecksumCheckPassed" || check == "AttachabilityCheckPassed" || check == "PassedExchangeMountabilityCheck" || check == "PassedExchangeChecksumCheck") //
 		{
-			result |= CheckState::Green;
+			result |= CheckStatesParser::Green;
 			continue;
 		}
 		else if (check == "FailedChecks" || check == "MountCheckFailed" || check == "ChecksumCheckFailed" || check == "FailedExchangeChecksumCheck" || check == "FailedExchangeMountabilityCheck") //
 		{
-			result |= CheckState::FailedChecks;
+			result |= CheckStatesParser::FailedChecks;
 			continue;
 		}
 		else if (check == "RequiredChecks" || check == "RequiredExchangeChecks")
 		{
-			result |= CheckState::Yellow;
+			result |= CheckStatesParser::Yellow;
 			continue;
 		}
 

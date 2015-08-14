@@ -3,12 +3,19 @@
 
 #include <QAbstractItemModel>
 #include <QList>
+#include <QImage>
 
 #include "MongoEventData.h"
 
 class MongoEventModel : public QAbstractItemModel
 {
 	Q_OBJECT
+private:
+	static QImage m_eventError;
+	static QImage m_eventInformation;
+	static QImage m_eventWarning;
+	static QImage m_eventUnknown;
+
 private:
 	QList<MongoEventData*> m_events;
 

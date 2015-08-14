@@ -19,7 +19,7 @@ public:
 
 	const QString& id() const;
 
-	CheckState checkState();
+	CheckStatesParser::CheckState checkState();
 
 	static bool ascTimeCompare(BaseModelItem* item1, BaseModelItem* item2);
 	static bool descTimeCompare(BaseModelItem* item1, BaseModelItem* item2);

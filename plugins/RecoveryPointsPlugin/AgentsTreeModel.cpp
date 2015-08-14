@@ -3,12 +3,40 @@
 #include <QImage>
 #include <QDebug>
 
+QImage AgentsTreeModel::m_computer;
+QImage AgentsTreeModel::m_redBall;
+QImage AgentsTreeModel::m_yellowBall;
+QImage AgentsTreeModel::m_grayBall;
+QImage AgentsTreeModel::m_greenBall;
+
 AgentsTreeModel::AgentsTreeModel(QObject *parent)
 	: QAbstractItemModel(parent)
 	, m_pRootItem(NULL)
 {
-	//m_pRootItem = factory.create("d:\\logs\\2430527\\1\\RecoveryPoints\\");
-	qDebug() << "Creating AGENT TREE MODEL";
+	if(m_computer.isNull())
+	{
+		m_computer = QImage(":/plugin/images/Resources/Computer.png");
+	}
+
+	if(m_redBall.isNull())
+	{
+		m_redBall = QImage(":/plugin/images/Resources/RedBall.png");
+	}
+
+	if(m_yellowBall.isNull())
+	{
+		m_yellowBall = QImage(":/plugin/images/Resources/YellowBall.png");
+	}
+
+	if(m_grayBall.isNull())
+	{
+		m_grayBall = QImage(":/plugin/images/Resources/GrayBall.png");
+	}
+
+	if(m_greenBall.isNull())
+	{
+		m_greenBall = QImage(":/plugin/images/Resources/GreenBall.png");
+	}
 }
 
 AgentsTreeModel::~AgentsTreeModel()
@@ -36,7 +64,10 @@ void AgentsTreeModel::reset()
 void AgentsTreeModel::setRootItem(BaseModelItem* pRootItem)
 {
 	beginResetModel();
+	
 	m_pRootItem = pRootItem;
+	sortByDate(false);
+
 	endResetModel();
 }
 
@@ -179,7 +210,7 @@ QVariant AgentsTreeModel::agentData(AgentModelItem* pAgentItem, int column, int 
 		case 0:
 			if (role == Qt::DecorationRole)
 			{
-				return QImage(":/plugin/images/Resources/Computer.png");
+				return m_computer;
 			}
 
 			return pAgentItem->displayName();
@@ -200,15 +231,15 @@ QVariant AgentsTreeModel::recoveryPointData(RecoveryPointModelItem* pRecoveryPoi
 			{
 				switch (pRecoveryPointItem->checkState())
 				{
-					case CheckState::Green:
-						return QImage(":/plugin/images/Resources/GreenBall.png");
-					case CheckState::Red:
-						return QImage(":/plugin/images/Resources/RedBall.png");
-					case CheckState::Yellow:
-						return QImage(":/plugin/images/Resources/YellowBall.png");
+					case CheckStatesParser::Green:
+						return m_greenBall;
+					case CheckStatesParser::Red:
+						return m_redBall;
+					case CheckStatesParser::Yellow:
+						return m_yellowBall;
 				}
 				
-				return QImage(":/plugin/images/Resources/GrayBall.png");
+				return m_grayBall;
 			}
 
 			return pRecoveryPointItem->content();
@@ -232,15 +263,15 @@ QVariant AgentsTreeModel::volumeData(VolumeModelItem* pVolumeItem, int column, i
 		{
 			switch (pVolumeItem->checkState())
 			{
-				case CheckState::Green:
-					return QImage(":/plugin/images/Resources/GreenBall.png");
-				case CheckState::Red:
-					return QImage(":/plugin/images/Resources/RedBall.png");
-				case CheckState::Yellow:
-					return QImage(":/plugin/images/Resources/YellowBall.png");
+				case CheckStatesParser::Green:
+					return m_greenBall;
+				case CheckStatesParser::Red:
+					return m_redBall;
+				case CheckStatesParser::Yellow:
+					return m_yellowBall;
 			}
 
-			return QImage(":/plugin/images/Resources/GrayBall.png");
+			return m_grayBall;
 		}
 
 		return pVolumeItem->displayName();

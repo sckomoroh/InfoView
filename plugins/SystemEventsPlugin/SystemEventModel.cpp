@@ -2,19 +2,54 @@
 
 #include <QImage>
 
-QImage SystemEventModel::m_sysEventCritical(":/plugin/images/Resources/critical.png");
-QImage SystemEventModel::m_sysEventError(":/plugin/images/Resources/error.png");
-QImage SystemEventModel::m_sysEventInfo(":/plugin/images/Resources/information.png");
-QImage SystemEventModel::m_sysEventVerbose(":/plugin/images/Resources/verbose.png");
-QImage SystemEventModel::m_sysEventWarning(":/plugin/images/Resources/warning.png");
-QImage SystemEventModel::m_sysEventLogAlways(":/plugin/images/Resources/logAlways.png");
-QImage SystemEventModel::m_sysEventQuestion(":/plugin/images/Resources/question.png");
+QImage SystemEventModel::m_sysEventCritical;
+QImage SystemEventModel::m_sysEventError;
+QImage SystemEventModel::m_sysEventInfo;
+QImage SystemEventModel::m_sysEventVerbose;
+QImage SystemEventModel::m_sysEventWarning;
+QImage SystemEventModel::m_sysEventLogAlways;
+QImage SystemEventModel::m_sysEventQuestion;
 
 SystemEventModel::SystemEventModel(SystemEventStorage* storage, QObject *parent)
 	: QAbstractItemModel(parent)
 	, m_storage(storage)
 {
 	m_storage->setListener(this);
+
+	if (m_sysEventCritical.isNull())
+	{
+		m_sysEventCritical = QImage(":/plugin/images/Resources/critical.png");
+	}
+
+	if (m_sysEventError.isNull())
+	{
+		m_sysEventError = QImage(":/plugin/images/Resources/error.png");
+	}
+
+	if (m_sysEventInfo.isNull())
+	{
+		m_sysEventInfo = QImage(":/plugin/images/Resources/information.png");
+	}
+
+	if (m_sysEventVerbose.isNull())
+	{
+		m_sysEventVerbose = QImage(":/plugin/images/Resources/verbose.png");
+	}
+
+	if (m_sysEventWarning.isNull())
+	{
+		m_sysEventWarning = QImage(":/plugin/images/Resources/warning.png");
+	}
+
+	if (m_sysEventLogAlways.isNull())
+	{
+		m_sysEventLogAlways = QImage(":/plugin/images/Resources/logAlways.png");
+	}
+
+	if (m_sysEventQuestion.isNull())
+	{
+		m_sysEventQuestion = QImage(":/plugin/images/Resources/question.png");
+	}
 }
 
 SystemEventModel::~SystemEventModel()

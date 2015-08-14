@@ -56,8 +56,8 @@ MongoJobData* MongoJobData::parseFromElement(QDomElement element)
 	object->m_id = element.firstChildElement("id").text();
 	object->m_phase = element.firstChildElement("phase").text();
 	QString jobStatus = element.firstChildElement("status").text();
-	object->m_status = (MongoJobType)(MongoJobData::parseJobStatus(jobStatus));
-    object->m_status = (MongoJobType)((int)object->m_status | (int)(element.firstChildElement("jobKind").text() == "ServiceJob" ? MongoJobType::mjtServiceJob : MongoJobType::mjtUserJob));
+	object->m_status = (MongoJobData::MongoJobType)(MongoJobData::parseJobStatus(jobStatus));
+    object->m_status = (MongoJobData::MongoJobType)((int)object->m_status | (int)(element.firstChildElement("jobKind").text() == "ServiceJob" ? MongoJobData::ServiceJob : MongoJobData::UserJob));
 
 	QDomElement failureElement = element.firstChildElement("failureReason");
 	if (failureElement.hasChildNodes())
@@ -70,24 +70,24 @@ MongoJobData* MongoJobData::parseFromElement(QDomElement element)
 	return object;
 }
 
-MongoJobType MongoJobData::parseJobStatus(QString jobStatus)
+MongoJobData::MongoJobType MongoJobData::parseJobStatus(QString jobStatus)
 {
 	if (jobStatus == "Succeeded")
 	{
-        return MongoJobType::mjtSuccess;
+        return MongoJobData::Success;
 	}
 
 	if (jobStatus == "Failed")
 	{
-        return MongoJobType::mjtFail;
+        return MongoJobData::Fail;
 	}
 
 	if (jobStatus == "Canceled")
 	{
-        return MongoJobType::mjtCancel;
+        return MongoJobData::Cancel;
 	}
 
-    return MongoJobType::mjtUnknown;
+    return MongoJobData::Unknown;
 }
 
 bool MongoJobData::acsByMessage(MongoJobData* item1, MongoJobData* item2)

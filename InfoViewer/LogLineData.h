@@ -2,20 +2,21 @@
 
 #include "CustomTextViewLine.h"
 
-enum LogType
-{
-	LogTypeDebug		= 0x1,
-	LogTypeInformation	= 0x2,
-	LogTypeError		= 0x4,
-	LogTypeWarning		= 0x8,
-	LogTypeFatal		= 0x10,
-	LogTypeTrace		= 0x20,
-	LogTypeUnknown		= 0x40
-};
-
 
 class LogLineData : public CustomTextViewLine
 {
+public:
+	enum LogType
+	{
+		LogTypeDebug		= 0x1,
+		LogTypeInformation	= 0x2,
+		LogTypeError		= 0x4,
+		LogTypeWarning		= 0x8,
+		LogTypeFatal		= 0x10,
+		LogTypeTrace		= 0x20,
+		LogTypeUnknown		= 0x40
+	};
+
 private:
 	static const QColor m_debugColor;
 	static const QColor m_errorColor;

@@ -36,7 +36,7 @@ private:
 
 	RegKeyData*			parseRegistryKey(QString line, RegKeyData* pParent);
 
-	RegValueDataType	parseValueType(QString line, RegValueData* pValue);
+	RegValueData::RegValueDataType	parseValueType(QString line, RegValueData* pValue);
 
 	void				parseValue(QString line, RegValueData* pValue);
 	void				parseStringValue(QString line, RegValueData* pValue);

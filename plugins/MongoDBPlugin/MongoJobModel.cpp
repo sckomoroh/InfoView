@@ -2,11 +2,30 @@
 
 #include <QImage>
 
+QImage MongoJobModel::m_success;
+QImage MongoJobModel::m_fail;
+QImage MongoJobModel::m_cancel;
+
 MongoJobModel::MongoJobModel(QObject *parent)
 	: QAbstractItemModel(parent)
 	, m_pRootItem(NULL)
 {
 	m_pRootItem = MongoJobData::emptyObject();
+
+	if (m_success.isNull())
+	{
+		m_success = QImage(":/plugin/images/Resources/success.png");
+	}
+
+	if (m_fail.isNull())
+	{
+		m_fail = QImage(":/plugin/images/Resources/fail.png");
+	}
+
+	if (m_cancel.isNull())
+	{
+		m_cancel = QImage(":/plugin/images/Resources/cancel.png");
+	}
 }
 
 MongoJobModel::~MongoJobModel()
@@ -37,7 +56,6 @@ void MongoJobModel::setModelData(const QList<MongoJobData*>& content)
 
 	endResetModel();
 }
-
 
 QModelIndex	MongoJobModel::index(int row, int column, const QModelIndex& parent/* = QModelIndex()*/) const
 {
@@ -111,20 +129,19 @@ QVariant MongoJobModel::data(const QModelIndex& index, int role/* = Qt::DisplayR
 	{
 		if (index.column() == 0)
 		{
-            if (pItem->jobType() & MongoJobType::mjtSuccess)
+            if (pItem->jobType() & MongoJobData::Success)
 			{
-				QImage image = QImage(":/plugin/images/Resources/success.png");
-				return image;
+				return m_success;
 			}
 
-            if (pItem->jobType() & MongoJobType::mjtFail)
+            if (pItem->jobType() & MongoJobData::Fail)
 			{
-				return QImage(":/plugin/images/Resources/fail.png");
+				return m_fail;
 			}
 
-            if (pItem->jobType() & MongoJobType::mjtCancel)
+            if (pItem->jobType() & MongoJobData::Cancel)
 			{
-				return QImage(":/plugin/images/Resources/cancel.png");
+				return m_cancel;
 			}
 		}
 

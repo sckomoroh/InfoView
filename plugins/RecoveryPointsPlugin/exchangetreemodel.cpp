@@ -3,17 +3,38 @@
 #include <QImage>
 #include <QDebug>
 
+QImage ExchangeTreeModel::m_redBall;
+QImage ExchangeTreeModel::m_yellowBall;
+QImage ExchangeTreeModel::m_grayBall;
+QImage ExchangeTreeModel::m_greenBall;
+
 ExchangeTreeModel::ExchangeTreeModel(QObject *parent)
 	: QAbstractItemModel(parent)
 	, m_pRootItem(NULL)
 {
-	qDebug() << "\tCreating EXCHANGE TREE MODEL";
+	if (m_redBall.isNull())
+	{
+		m_redBall = QImage(":/plugin/images/Resources/RedBall.png");
+	}
+
+	if (m_yellowBall.isNull())
+	{
+		m_yellowBall = QImage(":/plugin/images/Resources/YellowBall.png");
+	}
+
+	if (m_grayBall.isNull())
+	{
+		m_grayBall = QImage(":/plugin/images/Resources/GrayBall.png");
+	}
+
+	if (m_greenBall.isNull())
+	{
+		m_greenBall = QImage(":/plugin/images/Resources/GreenBall.png");
+	}
 }
 
 ExchangeTreeModel::~ExchangeTreeModel()
 {
-	qDebug() << "\tRemoving EXCHANGE TREE MODEL";
-
 	if (m_pRootItem != NULL)
 	{
 		delete m_pRootItem;
@@ -198,15 +219,15 @@ QVariant ExchangeTreeModel::databaseItemData(ExchangeDatabaseModelItem* pItemDat
 	{
 		switch (pItemData->checkState())
 		{
-		case CheckState::Yellow:
-			return QImage(":/plugin/images/Resources/YellowBall.png");
-		case CheckState::Red:
-			return QImage(":/plugin/images/Resources/RedBall.png");
-		case CheckState::Green:
-			return QImage(":/plugin/images/Resources/GreenBall.png");
+		case CheckStatesParser::Yellow:
+			return m_yellowBall;
+		case CheckStatesParser::Red:
+			return m_redBall;
+		case CheckStatesParser::Green:
+			return m_greenBall;
 		}
 
-		return QImage(":/plugin/images/Resources/GrayBall.png");
+		return m_grayBall;
 	}
 
 	return QVariant();

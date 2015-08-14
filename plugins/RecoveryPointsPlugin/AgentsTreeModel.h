@@ -3,6 +3,7 @@
 
 #include <QAbstractItemModel>
 #include <QList>
+#include <QImage>
 
 #include "BaseModelItem.h"
 #include "AgentModelItem.h"
@@ -12,6 +13,13 @@
 class AgentsTreeModel : public QAbstractItemModel
 {
 	Q_OBJECT
+private:
+	static QImage m_computer;
+	static QImage m_redBall;
+	static QImage m_yellowBall;
+	static QImage m_grayBall;
+	static QImage m_greenBall;
+
 private:
 	BaseModelItem* m_pRootItem;
 

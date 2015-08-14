@@ -95,7 +95,7 @@ QVariant BucketModel::headerData(int section, Qt::Orientation orientation, int r
 		return QVariant();
 	}
 
-	if (orientation == Qt::Orientation::Horizontal)
+	if (orientation == Qt::Horizontal)
 	{
 		if (section < 3)
 		{

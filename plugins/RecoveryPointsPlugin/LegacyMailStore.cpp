@@ -25,7 +25,7 @@ QString& LegacyMailStore::exchangeDatabasePath()
 	return m_exchangeDatabasePath;
 }
 
-CheckState LegacyMailStore::checkState()
+CheckStatesParser::CheckState LegacyMailStore::checkState()
 {
 	return m_checkState;
 }

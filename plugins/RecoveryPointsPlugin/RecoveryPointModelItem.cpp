@@ -38,27 +38,27 @@ uint RecoveryPointModelItem::size()
 	return m_pRecoveryPointRecord->size();
 }
 
-CheckState RecoveryPointModelItem::checkState()
+CheckStatesParser::CheckState RecoveryPointModelItem::checkState()
 {
-	CheckState state = CheckState::NoneState;
+	CheckStatesParser::CheckState state = CheckStatesParser::NoneState;
 
 	for each (VolumeImageSummary* pVolumeImageSummary in m_pRecoveryPointRecord->volumeImageSummuries())
 	{
-		if (pVolumeImageSummary->state() == CheckState::Red)
+		if (pVolumeImageSummary->state() == CheckStatesParser::Red)
 		{
-			state = CheckState::Red;
+			state = CheckStatesParser::Red;
 			continue;
 		}
 
-		if (pVolumeImageSummary->state() == CheckState::Green && state != CheckState::Red)
+		if (pVolumeImageSummary->state() == CheckStatesParser::Green && state != CheckStatesParser::Red)
 		{
-			state = CheckState::Green;
+			state = CheckStatesParser::Green;
 			continue;
 		}
 
-		if (pVolumeImageSummary->state() == CheckState::Yellow && (state != CheckState::Green && state != CheckState::Red))
+		if (pVolumeImageSummary->state() == CheckStatesParser::Yellow && (state != CheckStatesParser::Green && state != CheckStatesParser::Red))
 		{
-			state = CheckState::Yellow;
+			state = CheckStatesParser::Yellow;
 		}
 	}
 

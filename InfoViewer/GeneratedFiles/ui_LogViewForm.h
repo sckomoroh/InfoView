@@ -153,7 +153,7 @@ public:
         m_applyFilterPushButton = new QPushButton(LogViewForm);
         m_applyFilterPushButton->setObjectName(QStringLiteral("m_applyFilterPushButton"));
         QIcon icon2;
-        icon2.addFile(QStringLiteral(":/MainWindow/images/apply.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon2.addFile(QStringLiteral(":/InfoViewer/images/apply.png"), QSize(), QIcon::Normal, QIcon::Off);
         m_applyFilterPushButton->setIcon(icon2);
 
         horizontalLayout->addWidget(m_applyFilterPushButton);

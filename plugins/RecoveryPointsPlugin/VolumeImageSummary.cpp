@@ -74,7 +74,7 @@ QList<SqlInstance*>& VolumeImageSummary::sqlInstances()
 	return m_sqlInstances;
 }
 
-CheckState VolumeImageSummary::state()
+CheckStatesParser::CheckState VolumeImageSummary::state()
 {
 	return m_state;
 }

@@ -53,7 +53,7 @@ QList<SqlInstance*>& VolumeModelItem::sqlInstances()
 	return m_pVolumeImageSummary->sqlInstances();
 }
 
-CheckState VolumeModelItem::checkState()
+CheckStatesParser::CheckState VolumeModelItem::checkState()
 {
 	return m_pVolumeImageSummary->state();
 }

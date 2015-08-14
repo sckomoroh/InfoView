@@ -9,6 +9,7 @@ SystemEventStorage::SystemEventStorage()
 
 SystemEventStorage::~SystemEventStorage()
 {
+	m_listener = NULL;
 	clear();
 }
 

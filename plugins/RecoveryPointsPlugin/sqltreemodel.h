@@ -3,6 +3,7 @@
 
 #include <QAbstractItemModel>
 #include <QList>
+#include <QImage>
 
 #include "SqlBaseModelItem.h"
 #include "SqlDatabaseModelItem.h"
@@ -13,6 +14,12 @@ class SqlTreeModel : public QAbstractItemModel
 	Q_OBJECT
 private:
 	SqlBaseModelItem* m_pRootItem;
+
+private: 
+	static QImage m_redBall;
+	static QImage m_yellowBall;
+	static QImage m_grayBall;
+	static QImage m_greenBall;
 
 public:
 	SqlTreeModel(QObject *parent);

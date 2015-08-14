@@ -12,7 +12,7 @@ private:
 	QString m_name;
 	QString m_mailStoreType;
 	QString m_exchangeDatabasePath;
-	CheckState m_checkState;
+	CheckStatesParser::CheckState m_checkState;
 
 public:
 	LegacyMailStore();
@@ -20,7 +20,7 @@ public:
 
 	QString& name();
 	QString& mailStoreType();
-	CheckState checkState();
+	CheckStatesParser::CheckState checkState();
 	QString& exchangeDatabasePath();
 
 private:

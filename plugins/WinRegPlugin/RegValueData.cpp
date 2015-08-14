@@ -18,11 +18,11 @@ QString RegValueData::valueTypeToString()
 {
 	switch (m_valueType)
 	{
-	case RegValueDataType::RegBinary:
+	case RegValueData::RegBinary:
 		return "Binary";
-	case RegValueDataType::RegDWord:
+	case RegValueData::RegDWord:
 		return "DWord";
-	case RegValueDataType::RegString:
+	case RegValueData::RegString:
 		return "String";
 	}
 

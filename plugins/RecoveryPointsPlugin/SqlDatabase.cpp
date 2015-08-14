@@ -51,7 +51,7 @@ QList<SqlLogFile*> SqlDatabase::logFiles()
 	return m_logFiles;
 }
 
-CheckState SqlDatabase::checkState()
+CheckStatesParser::CheckState SqlDatabase::checkState()
 {
 	return m_checkState;
 }

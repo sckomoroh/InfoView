@@ -25,7 +25,7 @@ void LogParser::parseFile(const QString& fileName)
 
 	QTextStream textStream(&file);
 
-	LogType logType = LogType::LogTypeUnknown;
+	LogLineData::LogType logType = LogLineData::LogTypeUnknown;
 
 	while (!textStream.atEnd())
 	{
@@ -35,22 +35,22 @@ void LogParser::parseFile(const QString& fileName)
 
 		if (line.startsWith(DEBUG_PREFIX))
 		{
-			logType = LogType::LogTypeDebug;
+			logType = LogLineData::LogTypeDebug;
 			isHeader = true;
 		}
 		else if (line.startsWith(INFO_PREFIX))
 		{
-			logType = LogType::LogTypeInformation;
+			logType = LogLineData::LogTypeInformation;
 			isHeader = true;
 		}
 		else if (line.startsWith(WARN_PREFIX))
 		{
-			logType = LogType::LogTypeWarning;
+			logType = LogLineData::LogTypeWarning;
 			isHeader = true;
 		}
 		else if (line.startsWith(ERROR_PREFIX))
 		{
-			logType = LogType::LogTypeError;
+			logType = LogLineData::LogTypeError;
 			isHeader = true;
 		}
 

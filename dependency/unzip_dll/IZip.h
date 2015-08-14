@@ -16,6 +16,6 @@ public:
 	virtual void	closeZip() = 0;
 };
 
-__declspec(dllimport) IZip* getZipInstance();
+__declspec(dllexport) IZip* getZipInstance();
 
 #endif // IZIP_H

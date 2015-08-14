@@ -2,6 +2,7 @@
 #define EXCHANGETREEMODEL_H
 
 #include <QAbstractItemModel>
+#include <QImage>
 
 #include "RecoveryPointRecord.h"
 #include "ExchangeBaseModelItem.h"
@@ -12,6 +13,12 @@ class ExchangeTreeModel : public QAbstractItemModel
 	Q_OBJECT
 private:
 	ExchangeBaseModelItem* m_pRootItem;
+
+private: 
+	static QImage m_redBall;
+	static QImage m_yellowBall;
+	static QImage m_grayBall;
+	static QImage m_greenBall;
 
 public:
 	ExchangeTreeModel(QObject *parent);

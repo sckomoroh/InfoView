@@ -3,9 +3,33 @@
 #include <QDebug>
 #include <QImage>
 
+QImage MongoEventModel::m_eventError;
+QImage MongoEventModel::m_eventInformation;
+QImage MongoEventModel::m_eventWarning;
+QImage MongoEventModel::m_eventUnknown;
+
 MongoEventModel::MongoEventModel(QObject *parent)
 	: QAbstractItemModel(parent)
 {
+	if (m_eventError.isNull())
+	{
+		m_eventError = QImage(":/plugin/images/Resources/error.png");
+	}
+
+	if (m_eventInformation.isNull())
+	{
+		m_eventInformation = QImage(":/plugin/images/Resources/information.png");
+	}
+
+	if (m_eventWarning.isNull())
+	{
+		m_eventWarning = QImage(":/plugin/images/Resources/warning.png");
+	}
+
+	if (m_eventUnknown.isNull())
+	{
+		m_eventUnknown = QImage(":/plugin/images/Resources/question.png");
+	}
 }
 
 MongoEventModel::~MongoEventModel()
@@ -73,22 +97,22 @@ QVariant MongoEventModel::data(const QModelIndex& index, int role/* = Qt::Displa
 	{
 		if (index.column() == 0)
 		{
-			if (pObject->level() & EventLevel::EventError)
+			if (pObject->level() & MongoEventData::EventError)
 			{
-				return QImage(":/plugin/images/Resources/error.png");
+				return m_eventError;
 			}
 
-			if (pObject->level() & EventLevel::EventInformation)
+			if (pObject->level() & MongoEventData::EventInformation)
 			{
-				return QImage(":/plugin/images/Resources/information.png");
+				return m_eventInformation;
 			}
 
-			if (pObject->level() & EventLevel::EventWarning)
+			if (pObject->level() & MongoEventData::EventWarning)
 			{
-				return QImage(":/plugin/images/Resources/warning.png");
+				return m_eventWarning;
 			}
 
-			return QImage(":/plugin/images/Resources/question.png");
+			return m_eventUnknown;
 		}
 
 		return QVariant();
@@ -122,7 +146,7 @@ QVariant MongoEventModel::headerData(int section, Qt::Orientation orientation, i
 		return QVariant();
 	}
 
-	if (orientation == Qt::Orientation::Horizontal)
+	if (orientation == Qt::Horizontal)
 	{
 		if (section < 3)
 		{

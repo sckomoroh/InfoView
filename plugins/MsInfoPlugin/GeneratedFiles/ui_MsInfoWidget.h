@@ -29,11 +29,11 @@ public:
     QVBoxLayout *verticalLayout_3;
     QProgressBar *parsingProgressBar;
     QSplitter *splitter;
-    QWidget *layoutWidget;
-    QVBoxLayout *verticalLayout;
+    QWidget *layoutWidget_10;
+    QVBoxLayout *verticalLayout_1;
     QTreeView *categoriesTreeView;
     QLineEdit *categoryLineEdit;
-    QWidget *layoutWidget1;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_2;
     QTreeView *valuesTreeView;
     QLineEdit *valueLineEdit;
@@ -59,34 +59,34 @@ public:
         splitter = new QSplitter(MsInfoWidget);
         splitter->setObjectName(QStringLiteral("splitter"));
         splitter->setOrientation(Qt::Horizontal);
-        layoutWidget = new QWidget(splitter);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        verticalLayout = new QVBoxLayout(layoutWidget);
-        verticalLayout->setSpacing(6);
-        verticalLayout->setContentsMargins(11, 11, 11, 11);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        categoriesTreeView = new QTreeView(layoutWidget);
+        layoutWidget_10 = new QWidget(splitter);
+        layoutWidget_10->setObjectName(QStringLiteral("layoutWidget_10"));
+        verticalLayout_1 = new QVBoxLayout(layoutWidget_10);
+        verticalLayout_1->setSpacing(6);
+        verticalLayout_1->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_1->setObjectName(QStringLiteral("verticalLayout_1"));
+        verticalLayout_1->setContentsMargins(0, 0, 0, 0);
+        categoriesTreeView = new QTreeView(layoutWidget_10);
         categoriesTreeView->setObjectName(QStringLiteral("categoriesTreeView"));
         categoriesTreeView->setAlternatingRowColors(true);
 
-        verticalLayout->addWidget(categoriesTreeView);
+        verticalLayout_1->addWidget(categoriesTreeView);
 
-        categoryLineEdit = new QLineEdit(layoutWidget);
+        categoryLineEdit = new QLineEdit(layoutWidget_10);
         categoryLineEdit->setObjectName(QStringLiteral("categoryLineEdit"));
         categoryLineEdit->setReadOnly(true);
 
-        verticalLayout->addWidget(categoryLineEdit);
+        verticalLayout_1->addWidget(categoryLineEdit);
 
-        splitter->addWidget(layoutWidget);
-        layoutWidget1 = new QWidget(splitter);
-        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        verticalLayout_2 = new QVBoxLayout(layoutWidget1);
+        splitter->addWidget(layoutWidget_10);
+        layoutWidget = new QWidget(splitter);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        verticalLayout_2 = new QVBoxLayout(layoutWidget);
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        valuesTreeView = new QTreeView(layoutWidget1);
+        valuesTreeView = new QTreeView(layoutWidget);
         valuesTreeView->setObjectName(QStringLiteral("valuesTreeView"));
         valuesTreeView->setAlternatingRowColors(true);
         valuesTreeView->setRootIsDecorated(false);
@@ -95,13 +95,13 @@ public:
 
         verticalLayout_2->addWidget(valuesTreeView);
 
-        valueLineEdit = new QLineEdit(layoutWidget1);
+        valueLineEdit = new QLineEdit(layoutWidget);
         valueLineEdit->setObjectName(QStringLiteral("valueLineEdit"));
         valueLineEdit->setReadOnly(true);
 
         verticalLayout_2->addWidget(valueLineEdit);
 
-        splitter->addWidget(layoutWidget1);
+        splitter->addWidget(layoutWidget);
 
         verticalLayout_3->addWidget(splitter);
 

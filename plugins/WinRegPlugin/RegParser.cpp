@@ -120,11 +120,11 @@ void RegParser::addLineToValue(QString line, RegValueData* pValue)
 {
 	pValue->addValueLine(line);
 
-	if (pValue->m_valueType == RegValueDataType::RegString)
+	if (pValue->m_valueType == RegValueData::RegString)
 	{
 		m_bNeedNextLine = !line.endsWith("\"");
 	}
-	else if (pValue->m_valueType == RegValueDataType::RegBinary)
+	else if (pValue->m_valueType == RegValueData::RegBinary)
 	{
 		m_bNeedNextLine = line.endsWith("\\");
 	}
@@ -183,42 +183,42 @@ RegValueData* RegParser::parseNamedValue(QString line)
 	return result;
 }
 
-RegValueDataType RegParser::parseValueType(QString line, RegValueData* pValue)
+RegValueData::RegValueDataType RegParser::parseValueType(QString line, RegValueData* pValue)
 {
 	if (line.at(0) == '\"')
 	{
-		pValue->m_valueType = RegValueDataType::RegString;
-		return RegValueDataType::RegString;
+		pValue->m_valueType = RegValueData::RegString;
+		return RegValueData::RegString;
 	}
 
 	if (line.mid(0, 3) == "hex")
 	{
-		pValue->m_valueType = RegValueDataType::RegBinary;
-		return RegValueDataType::RegBinary;
+		pValue->m_valueType = RegValueData::RegBinary;
+		return RegValueData::RegBinary;
 	}
 
 	if (line.mid(0, 5) == "dword")
 	{
-		pValue->m_valueType = RegValueDataType::RegDWord;
-		return RegValueDataType::RegDWord;
+		pValue->m_valueType = RegValueData::RegDWord;
+		return RegValueData::RegDWord;
 	}
 
-	return RegValueDataType::RegUnknown;
+	return RegValueData::RegUnknown;
 }
 
 void RegParser::parseValue(QString line, RegValueData* pValue)
 {
 	switch (parseValueType(line, pValue))
 	{
-	case RegValueDataType::RegBinary:
+	case RegValueData::RegBinary:
 		parseBinHexValue(line, pValue);
 		break;
 
-	case RegValueDataType::RegDWord:
+	case RegValueData::RegDWord:
 		parseDWordValue(line, pValue);
 		break;
 
-	case RegValueDataType::RegString:
+	case RegValueData::RegString:
 		parseStringValue(line, pValue);
 		break;
 	}

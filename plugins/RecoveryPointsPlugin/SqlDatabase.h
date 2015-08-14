@@ -16,7 +16,7 @@ private:
 	bool m_bIsOnline;
 	QList<SqlFileGroup*> m_fileGroups;
 	QList<SqlLogFile*> m_logFiles;
-	CheckState m_checkState;
+	CheckStatesParser::CheckState m_checkState;
 
 public:
 	SqlDatabase();
@@ -31,7 +31,7 @@ public:
 
 	QList<SqlLogFile*> logFiles();
 
-	CheckState checkState();
+	CheckStatesParser::CheckState checkState();
 
 private:
 	friend class RecoveryPointsParser;

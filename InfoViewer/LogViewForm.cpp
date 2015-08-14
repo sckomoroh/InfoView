@@ -62,22 +62,22 @@ void LogViewForm::onApplyButtonClicked()
 
 	if (ui.m_infoCheckBox->isChecked())
 	{
-		levelFlags |= LogType::LogTypeInformation;
+		levelFlags |= LogLineData::LogTypeInformation;
 	}
 
 	if (ui.m_warnCheckBox->isChecked())
 	{
-		levelFlags |= LogType::LogTypeWarning;
+		levelFlags |= LogLineData::LogTypeWarning;
 	}
 
 	if (ui.m_debugCheckBox->isChecked())
 	{
-		levelFlags |= LogType::LogTypeDebug;
+		levelFlags |= LogLineData::LogTypeDebug;
 	}
 
 	if (ui.m_errorCheckBox->isChecked())
 	{
-		levelFlags |= LogType::LogTypeError;
+		levelFlags |= LogLineData::LogTypeError;
 	}
 
 	QString filterString = ui.m_filterLineEdit->text();

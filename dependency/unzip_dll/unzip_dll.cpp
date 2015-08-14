@@ -61,8 +61,8 @@ private:
 	wstring	m_sName;
 };
 
-#define __declspec(dllexport)
-IZip* getZipInstance()
+//__declspec(dllexport)
+ IZip* getZipInstance()
 {
 	return (new UnZip);	
 }

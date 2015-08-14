@@ -10,7 +10,7 @@
 class MongoEventParser
 {
 private:
-	static QMap<QString, EventLevel> m_events;
+	static QMap<QString, MongoEventData::EventLevel> m_events;
 
 	QList<IMongoEventParserListener*> m_listeners;
 	MongoEventStorage* m_pStorage;
@@ -35,6 +35,6 @@ private:
 	void fireCompleteParsingEvents();
 
 	static void readEventsMap();
-	static EventLevel parseEventLevel(const QString& strLevel);
+	static MongoEventData::EventLevel parseEventLevel(const QString& strLevel);
 };
 

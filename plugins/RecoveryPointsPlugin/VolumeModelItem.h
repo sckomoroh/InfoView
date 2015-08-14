@@ -25,6 +25,6 @@ public:
 
 	QList<SqlInstance*>& sqlInstances();
 
-	CheckState checkState();
+	CheckStatesParser::CheckState checkState();
 };
 

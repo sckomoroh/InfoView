@@ -80,30 +80,30 @@ void MongoJobWidget::onJodApplyFilterClick()
 
 	if (ui.serviceJobCheckBox->isChecked())
 	{
-        iJobTypeFlags |= MongoJobType::mjtServiceJob;
+        iJobTypeFlags |= MongoJobData::ServiceJob;
 	}
 
 	if (ui.userJobCheckBox->isChecked())
 	{
-        iJobTypeFlags |= MongoJobType::mjtUserJob;
+        iJobTypeFlags |= MongoJobData::UserJob;
 	}
 
 	if (ui.successCheckBox->isChecked())
 	{
-        iJobTypeFlags |= MongoJobType::mjtSuccess;
+        iJobTypeFlags |= MongoJobData::Success;
 	}
 
 	if (ui.cancelCheckBox->isChecked())
 	{
-        iJobTypeFlags |= MongoJobType::mjtCancel;
+        iJobTypeFlags |= MongoJobData::Cancel;
 	}
 
 	if (ui.failCheckBox->isChecked())
 	{
-        iJobTypeFlags |= MongoJobType::mjtFail;
+        iJobTypeFlags |= MongoJobData::Fail;
 	}
 
-	m_pJobsModel->setModelData(m_pJobsParserThread->parser()->storage()->filteredJob((MongoJobType)iJobTypeFlags, filterString));
+	m_pJobsModel->setModelData(m_pJobsParserThread->parser()->storage()->filteredJob((MongoJobData::MongoJobType)iJobTypeFlags, filterString));
 }
 
 void MongoJobWidget::onCurrentJobChanged(const QModelIndex& index, const QModelIndex& oldIndex)
@@ -111,15 +111,15 @@ void MongoJobWidget::onCurrentJobChanged(const QModelIndex& index, const QModelI
 	MongoJobData* pJobObject = m_pJobsModel->rawData(index);
 
 	QString jobStatus;
-    if (pJobObject->jobType() & MongoJobType::mjtSuccess)
+    if (pJobObject->jobType() & MongoJobData::Success)
 	{
 		jobStatus = "Succeeded";
 	}
-    else if (pJobObject->jobType() & MongoJobType::mjtFail)
+    else if (pJobObject->jobType() & MongoJobData::Fail)
 	{
 		jobStatus = "Failed";
 	}
-    else if (pJobObject->jobType() & MongoJobType::mjtCancel)
+    else if (pJobObject->jobType() & MongoJobData::Cancel)
 	{
 		jobStatus = "Canceled";
 	} 

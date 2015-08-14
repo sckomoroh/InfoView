@@ -18,7 +18,7 @@ private:
 	QString m_status;
 	QString m_guidName;
 	QString m_displayName;
-	CheckState m_state;
+	CheckStatesParser::CheckState m_state;
 	QDateTime m_timestamp;
 	qlonglong m_iSize;
 	Exchange* m_pExchange;
@@ -40,7 +40,7 @@ public:
 
 	const QString& displayName() const;
 
-	CheckState state();
+	CheckStatesParser::CheckState state();
 
 	const QDateTime& timestamp() const;
 

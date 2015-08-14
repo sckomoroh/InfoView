@@ -14,7 +14,7 @@ private:
 	QString m_systemPath;
 	QString m_name;
 	QString m_logPrefix;
-	CheckState m_checkState;
+	CheckStatesParser::CheckState m_checkState;
 
 public:
 	MailStore();
@@ -30,7 +30,7 @@ public:
 
 	QString& logPrefix();
 
-	CheckState checkState();
+	CheckStatesParser::CheckState checkState();
 
 private:
 	friend class RecoveryPointsParser;

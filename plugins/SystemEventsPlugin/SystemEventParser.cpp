@@ -131,7 +131,10 @@ SystemEventData::SysEventLevel SystemEventParser::parseEventLevel(uint iEventLev
 			return SystemEventData::SysEventVerbose;
 	}
 
-	qDebug() << "UNKNOWN EVENT LEVEL: " << iEventLevel;
+	if (iEventLevel != 0)
+	{
+		qDebug() << "UNKNOWN EVENT LEVEL: " << iEventLevel;
+	}
 
 	return SystemEventData::SysEventLogAlways;
 }

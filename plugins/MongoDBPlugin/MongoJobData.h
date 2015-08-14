@@ -6,18 +6,20 @@
 #include <QList>
 #include <QDateTime>
 
-enum MongoJobType
-{
-	mjtServiceJob	= 0x1,
-	mjtUserJob		= 0x2,
-	mjtSuccess		= 0x4,
-	mjtFail			= 0x8,
-	mjtCancel		= 0x10,
-	mjtUnknown		= 0x20
-};
 
 class MongoJobData
 {
+public:
+	enum MongoJobType
+	{
+		ServiceJob	= 0x1,
+		UserJob		= 0x2,
+		Success		= 0x4,
+		Fail		= 0x8,
+		Cancel		= 0x10,
+		Unknown		= 0x20
+	};
+
 private:
 	QString					m_summary;
 	QDateTime				m_startTime;

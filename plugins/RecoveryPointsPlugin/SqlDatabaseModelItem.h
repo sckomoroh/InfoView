@@ -6,12 +6,12 @@
 class SqlDatabaseModelItem : public SqlBaseModelItem
 {
 private:
-	CheckState m_checkState;
+	CheckStatesParser::CheckState m_checkState;
 
 public:
-	SqlDatabaseModelItem(const QString& content, SqlBaseModelItem* pParent, CheckState checkState);
+	SqlDatabaseModelItem(const QString& content, SqlBaseModelItem* pParent, CheckStatesParser::CheckState checkState);
 	virtual ~SqlDatabaseModelItem();
 
-	CheckState checkState();
+	CheckStatesParser::CheckState checkState();
 };
 

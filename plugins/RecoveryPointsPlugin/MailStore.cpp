@@ -35,7 +35,7 @@ QString& MailStore::logPrefix()
 	return m_logPrefix;
 }
 
-CheckState MailStore::checkState()
+CheckStatesParser::CheckState MailStore::checkState()
 {
 	return m_checkState;
 }

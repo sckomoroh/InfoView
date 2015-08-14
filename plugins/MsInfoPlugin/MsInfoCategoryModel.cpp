@@ -125,7 +125,7 @@ int	MsInfoCategoryModel::rowCount(const QModelIndex& parent/* = QModelIndex()*/)
 
 QVariant MsInfoCategoryModel::headerData(int section, Qt::Orientation orientation, int role/* = Qt::DisplayRole*/) const
 {
-	if (orientation == Qt::Orientation::Horizontal)
+	if (orientation == Qt::Horizontal)
 	{
 		return QString("Categories");
 	}

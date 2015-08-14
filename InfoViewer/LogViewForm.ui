@@ -197,8 +197,8 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset>
-         <normaloff>:/MainWindow/images/apply.png</normaloff>:/MainWindow/images/apply.png</iconset>
+        <iconset resource="infoviewer.qrc">
+         <normaloff>:/InfoViewer/images/apply.png</normaloff>:/InfoViewer/images/apply.png</iconset>
        </property>
       </widget>
      </item>

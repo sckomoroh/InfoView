@@ -3,11 +3,12 @@
 #include <QFile>
 #include <QDomDOcument>
 #include <QDebug>
+#include <QApplication>
 
 #include "BsonDocumentSet.h"
 #include "MongoEventData.h"
 
-QMap<QString, EventLevel> MongoEventParser::m_events;
+QMap<QString, MongoEventData::EventLevel> MongoEventParser::m_events;
 
 MongoEventParser::MongoEventParser()
 {
@@ -62,22 +63,22 @@ void MongoEventParser::parse(const QString& fileName)
 		}
 		else
 		{
-			eventLevel = EventLevel::EventUnknown;
-			pObject->setLevel((EventLevel)eventLevel);
+			eventLevel = MongoEventData::EventUnknown;
+			pObject->setLevel((MongoEventData::EventLevel)eventLevel);
 		}
 
 		fireEventParsed(++iCurrent, iTotal);
 
 		if (pObject->isAlert())
 		{
-			eventLevel |= (int)EventLevel::EventAlert;
+			eventLevel |= (int)MongoEventData::EventAlert;
 		}
 		else
 		{
-			eventLevel |= (int)EventLevel::EventEvent;
+			eventLevel |= (int)MongoEventData::EventEvent;
 		}
 
-		pObject->setLevel((EventLevel)eventLevel);
+		pObject->setLevel((MongoEventData::EventLevel)eventLevel);
 		m_pStorage->addEvent(pObject);
 	}
 
@@ -133,7 +134,9 @@ void MongoEventParser::fireCompleteParsingEvents()
 
 void MongoEventParser::readEventsMap()
 {
-	QFile msInfoFile("coreEvents.xml");
+	QString appFolder = QApplication::applicationDirPath();
+	QString coreEventFileName = appFolder + "/coreEvents.xml";
+	QFile msInfoFile(coreEventFileName);
 
 	if (!msInfoFile.open(QIODevice::ReadOnly))
 	{
@@ -156,28 +159,28 @@ void MongoEventParser::readEventsMap()
 
 		QString className = eventElement.attribute("className");
 		QString eventLevelStr = eventElement.attribute("level");
-		EventLevel eventLevel = MongoEventParser::parseEventLevel(eventLevelStr);
+		MongoEventData::EventLevel eventLevel = MongoEventParser::parseEventLevel(eventLevelStr);
 
 		MongoEventParser::m_events[className] = eventLevel;
 	}
 }
 
-EventLevel MongoEventParser::parseEventLevel(const QString& strLevel)
+MongoEventData::EventLevel MongoEventParser::parseEventLevel(const QString& strLevel)
 {
 	if (strLevel == "Info")
 	{
-		return EventLevel::EventInformation;
+		return MongoEventData::EventInformation;
 	}
 
 	if (strLevel == "Error")
 	{
-		return EventLevel::EventError;
+		return MongoEventData::EventError;
 	}
 
 	if (strLevel == "Warning")
 	{
-		return EventLevel::EventWarning;
+		return MongoEventData::EventWarning;
 	}
 
-	return EventLevel::EventUnknown;
+	return MongoEventData::EventUnknown;
 }

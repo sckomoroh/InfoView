@@ -11,17 +11,17 @@ LogLineData::LogLineData(const QString& content, bool isHeader, LogType logType)
 {
 	switch (logType)
 	{
-		case LogType::LogTypeDebug:
+		case LogLineData::LogTypeDebug:
 			setColor(&m_debugColor);
 			break;
-		case LogType::LogTypeError:
-		case LogType::LogTypeFatal:
+		case LogLineData::LogTypeError:
+		case LogLineData::LogTypeFatal:
 			setColor(&m_errorColor);
 			break;
-		case LogType::LogTypeInformation:
+		case LogLineData::LogTypeInformation:
 			setColor(&m_infoColor);
 			break;
-		case LogType::LogTypeWarning:
+		case LogLineData::LogTypeWarning:
 			setColor(&m_warnColor);
 			break;
 		default:
