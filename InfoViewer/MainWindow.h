@@ -5,6 +5,7 @@
 #include <QList>
 #include <QSettings>
 #include <QLibrary>
+#include <QAxWidget>
 
 #include "ui_MainWindow.h"
 
@@ -26,9 +27,9 @@ private:
 	AmazonDownloadDialog* m_pDownloadDialog;
 
 	QMap<QString, IPlugin*> m_plugins;
+	QMap<QString, QAxWidget*> m_winPlugins;
 	QMap<QString, QAction*> m_pluginActions;
 	QMap<QString, QDockWidget*> m_pluginWidgets;
-
 
 public:
 	MainWindow(QWidget *parent = 0);
@@ -40,7 +41,10 @@ private:
 
 	void initPlugins();
 	void initPlugin(const QString& pluginFileName);
-	QDockWidget* createQtPlugin(QLibrary* lib, IPlugin** plugin);
+	void initActiveXPlugins();
+
+	QDockWidget* createQtPlugin(QLibrary* lib);
+	QDockWidget* createActiveXPlugin(QString pluginInstanceName);
 
 private slots:
 	void onOpenAction();

@@ -5,6 +5,8 @@
 #include <QDebug>
 #include <QAction>
 #include <QMessageBox>
+#include <QDomDocument>
+#include <QtWin>
 
 #include "SearchLineData.h"
 
@@ -39,6 +41,7 @@ MainWindow::MainWindow(QWidget *parent)
 	connect(m_pDownloadDialog, SIGNAL(logsCompleted()), SLOT(onLogsCompleted()));
 
 	initPlugins();
+	initActiveXPlugins();
 }
 
 MainWindow::~MainWindow()
@@ -98,6 +101,15 @@ void MainWindow::openFolder(QString folder)
 		IPlugin* pluginInst = *pluginIter;
 		pluginInst->resetPluginData();
 		pluginInst->initPluginData(folderBuffer);
+	}
+
+	QVariant folderVar(folder);
+	QMap<QString, QAxWidget*>::iterator winPluginIter = m_winPlugins.begin();
+	for (; winPluginIter != m_winPlugins.end(); ++winPluginIter)
+	{
+		QAxWidget* winPluginInst = *winPluginIter;
+		winPluginInst->dynamicCall("ResetPluginData()");
+		winPluginInst->dynamicCall("InitPluginData(BSTR)", folderVar);
 	}
 
 	QFileInfoList logFiles = logsFolder.entryInfoList();
@@ -210,14 +222,6 @@ void MainWindow::initPlugins()
 		QString pluginName = *iter;
 		initPlugin(path + "/" + pluginName);
 	}
-
-	QMap<QString, QAction*>::iterator actionIter = m_pluginActions.begin();
-	for (; actionIter != m_pluginActions.end(); ++actionIter)
-	{
-		QAction* action = *actionIter;
-		ui.mainToolBar->addAction(action);
-		ui.menuPlugins->addAction(action);
-	}
 }
 
 void MainWindow::initPlugin(const QString& pluginFileName)
@@ -229,22 +233,15 @@ void MainWindow::initPlugin(const QString& pluginFileName)
 
 		if (isWin32Func != NULL)
 		{
-			IPlugin* pluginInst;
 			QDockWidget* pDocPluginWidget = NULL;
 			if (isWin32Func() == 0)
 			{
-				pDocPluginWidget = createQtPlugin(pluginLib, &pluginInst);
-			}
-			else
-			{
-				// Not implemented yet
-				//pDocPluginWidget = createWin32Plugin(pluginLib, &pluginInst);
+				pDocPluginWidget = createQtPlugin(pluginLib);
 			}
 
 			if (pDocPluginWidget != NULL)
 			{
 				this->tabifyDockWidget(ui.searchResultDockWidget, pDocPluginWidget);
-				pluginInst->initPluginData(L"d:/logs/test/2879507-Core; Local Mount Utility-24-06-2015-12-d50-15/");
 			}
 		}
 	}
@@ -254,7 +251,7 @@ void MainWindow::initPlugin(const QString& pluginFileName)
 	}
 }
 
-QDockWidget* MainWindow::createQtPlugin(QLibrary* lib, IPlugin** plugin)
+QDockWidget* MainWindow::createQtPlugin(QLibrary* lib)
 {
 	createPluginFuncPtr pluginCreateFunc = (createPluginFuncPtr)lib->resolve("createQtPlugin");
 
@@ -265,8 +262,6 @@ QDockWidget* MainWindow::createQtPlugin(QLibrary* lib, IPlugin** plugin)
 		{
 			return NULL;
 		}
-
-		*plugin = pluginInst;
 
 		wchar_t* szPluginId = pluginInst->getPluginId();
 		QString pluginId = QString::fromWCharArray(szPluginId, wcslen(szPluginId));
@@ -289,6 +284,9 @@ QDockWidget* MainWindow::createQtPlugin(QLibrary* lib, IPlugin** plugin)
 		m_plugins[pluginId] = pluginInst;
 
 		connect(pluginAction, SIGNAL(triggered()), SLOT(onPluginAction()));
+
+		ui.mainToolBar->addAction(pluginAction);
+		ui.menuPlugins->addAction(pluginAction);
 
 		return pluginDockWidget;
 	}
@@ -321,3 +319,99 @@ void MainWindow::onPluginAction()
 		dockWidget->raise();
 	}
 }
+
+void MainWindow::initActiveXPlugins()
+{
+	QString folder = QApplication::applicationDirPath();
+	QString fileName = folder + "/plugins.xml";
+
+	QDomDocument document;
+	QFile file(fileName);
+	if (!file.open(QIODevice::ReadOnly))
+	{
+		return;
+	}
+
+	if (!document.setContent(&file)) 
+	{
+		file.close();
+		return;
+	}
+
+	file.close();
+
+	QDomElement rootElement = document.documentElement();
+	QDomNodeList pluginElements = rootElement.elementsByTagName("plugin");
+	for (int i=0; i<pluginElements.count(); i++)
+	{
+		QDomNode pluginNode = pluginElements.at(i);
+		if (pluginNode.isElement())
+		{
+			QDomElement pluginElement = pluginNode.toElement();
+			QString pluginInstanceName = pluginElement.attribute("InstanceName");
+
+			if (!pluginInstanceName.isNull() && !pluginInstanceName.isEmpty())
+			{
+				QDockWidget* pluginDockWidget = createActiveXPlugin(pluginInstanceName);
+				if (pluginDockWidget != NULL)
+				{
+					this->tabifyDockWidget(ui.searchResultDockWidget, pluginDockWidget);
+				}
+			}
+		}
+	}
+}
+
+QDockWidget* MainWindow::createActiveXPlugin(QString pluginInstanceName)
+{
+	QAxWidget* axWidget = new QAxWidget(this);
+	if (axWidget->setControl("VersionInfo.InfoViewPlugin") == false)
+	{
+		delete axWidget;
+		return NULL;
+	}
+
+	QVariant pluginNameVar = axWidget->dynamicCall("GetPluginName()");
+	QVariant pluginIconVar = axWidget->dynamicCall("GetPluginIcon()");
+	QVariant pluginIdVar = axWidget->dynamicCall("GetPluginId()");
+
+	if (pluginNameVar.isNull())
+	{
+		delete axWidget;
+		return NULL;
+	}
+
+	if (pluginIconVar.isNull())
+	{
+		delete axWidget;
+		return NULL;
+	}
+
+	if (pluginIdVar.isNull())
+	{
+		delete axWidget;
+		return NULL;
+	}
+
+	QString pluginName = pluginNameVar.toString();
+	QString pluginId = pluginIdVar.toString();
+	HBITMAP hBitmap = (HBITMAP)pluginIconVar.toInt();
+
+	QPixmap pixmap = QtWin::fromHBITMAP(hBitmap);
+	QAction* pluginAction = new QAction(QIcon(pixmap), pluginName, this);
+
+	QDockWidget* pluginDockWidget = new QDockWidget(pluginName, this);
+	pluginDockWidget->setWidget(axWidget);
+
+	m_pluginActions[pluginId] = pluginAction;
+	m_pluginWidgets[pluginId] = pluginDockWidget;
+	m_winPlugins[pluginId] = axWidget;
+
+	connect(pluginAction, SIGNAL(triggered()), SLOT(onPluginAction()));
+
+	ui.mainToolBar->addAction(pluginAction);
+	ui.menuPlugins->addAction(pluginAction);
+
+	return pluginDockWidget;
+}
+
