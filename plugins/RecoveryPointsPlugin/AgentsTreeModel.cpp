@@ -66,7 +66,7 @@ void AgentsTreeModel::setRootItem(BaseModelItem* pRootItem)
 	beginResetModel();
 	
 	m_pRootItem = pRootItem;
-	sortByDate(false);
+	sortByDate(true);
 
 	endResetModel();
 }

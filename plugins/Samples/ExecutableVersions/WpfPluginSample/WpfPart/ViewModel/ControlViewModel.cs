@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace WpfPluginSample.WpfPart.ViewModel
 {
@@ -18,30 +19,37 @@ namespace WpfPluginSample.WpfPart.ViewModel
 
         public void BuildModel(string folder)
         {
-            var fileName = Path.Combine(folder, "ExecutableVersions.txt");
-            var lines = File.ReadAllLines(fileName);
-
-            foreach (var line in lines)
+            var dispatcher = System.Windows.Threading.Dispatcher.CurrentDispatcher;
+            Task.Factory.StartNew(() =>
             {
-                var index = line.IndexOf("--");
-                var name = line.Substring(0, index - 1);
-                var version = string.Empty;
+                var fileName = Path.Combine(folder, "ExecutableVersions.txt");
+                var lines = File.ReadAllLines(fileName);
 
-                if (index + 3 >= line.Length)
+                foreach (var line in lines)
                 {
-                    version = "N/A";
-                }
-                else
-                {
-                    version = line.Substring(index + 3);
-                }
+                    var index = line.IndexOf("--");
+                    var name = line.Substring(0, index - 1);
+                    var version = string.Empty;
 
-                Items.Add(new ModelItem
-                {
-                    Name = name,
-                    Version = version
-                });
-            }
+                    if (index + 3 >= line.Length)
+                    {
+                        version = "N/A";
+                    }
+                    else
+                    {
+                        version = line.Substring(index + 3);
+                    }
+
+                    dispatcher.Invoke(new Action(() =>
+                    {
+                        Items.Add(new ModelItem
+                        {
+                            Name = name,
+                            Version = version
+                        });
+                    }));
+                }
+            });
         }
 
         public void ResetModel()

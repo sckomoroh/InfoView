@@ -365,7 +365,7 @@ void MainWindow::initActiveXPlugins()
 QDockWidget* MainWindow::createActiveXPlugin(QString pluginInstanceName)
 {
 	QAxWidget* axWidget = new QAxWidget(this);
-	if (axWidget->setControl("VersionInfo.InfoViewPlugin") == false)
+	if (axWidget->setControl(pluginInstanceName) == false)
 	{
 		delete axWidget;
 		return NULL;
