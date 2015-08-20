@@ -1,0 +1,5 @@
+<!-- This file contains the instance names of the InfoView activeX plugins -->
+<plugins>
+	<plugin InstanceName="VersionInfo.InfoViewPlugin" /> 
+	<plugin InstanceName="NetStatInfo.InfoViewPlugin" /> 
+</plugins>
