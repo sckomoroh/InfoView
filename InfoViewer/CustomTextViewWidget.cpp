@@ -555,7 +555,17 @@ void CustomTextViewWidget::onCopyAction()
 		}
 
 		QString selectionString = m_pModel->lineAt(m_startSelectionLine)->string();
-		selectionString = selectionString.mid(m_startSelectionPos, m_endSelectionPos - m_startSelectionPos);
+
+		int startPosition = m_startSelectionPos;
+		int endPosition = m_endSelectionPos;
+
+		if (m_endSelectionPos < m_startSelectionPos)
+		{
+			endPosition = m_startSelectionPos;
+			startPosition = m_endSelectionPos;
+		}
+
+		selectionString = selectionString.mid(startPosition, endPosition - startPosition);
 		pClipboard->setText(selectionString);
 	}
 	else
