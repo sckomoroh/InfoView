@@ -1,5 +1,6 @@
 #include "BsonDocumentSet.h"
 
+#define MAX_SEGMENT_SIZE 0x8000000 // 128Mb
 
 BsonDocumentSet::BsonDocumentSet(void)
 {
@@ -36,7 +37,9 @@ unsigned int BsonDocumentSet::readDocumentSize(unsigned char* nBuffer)
 BsonDocumentSet* BsonDocumentSetFactory::createFromDump(const char* sFileName)
 {
 	UInt nBufferOffset = 0;
+	UInt nOffsetInFile = 0;
 	fpos_t nFileSize = 0;
+	fpos_t nBufferSize = 0;
 	errno_t nError = 0;
 	FILE* pFile = NULL;
 	BsonDocumentSet* pDocumentSet = NULL;
@@ -53,20 +56,45 @@ BsonDocumentSet* BsonDocumentSetFactory::createFromDump(const char* sFileName)
 	fseek(pFile, 0, SEEK_SET);
 
 	// Prepare the content buffer and read it from the file
-	unsigned char* sFileContent = new unsigned char[nFileSize + 1];
-	memset(sFileContent, 0, nFileSize + 1);
+	if (nFileSize > MAX_SEGMENT_SIZE)
+	{
+		nBufferSize = MAX_SEGMENT_SIZE;
+	}
+	else
+	{
+		nBufferSize = nFileSize;
+	}
 
-	fread(sFileContent, nFileSize, 1, pFile);
+	unsigned char* sFileContent = new unsigned char[nBufferSize + 1];
+	memset(sFileContent, 0, nBufferSize + 1);
+
+	fread(sFileContent, nBufferSize, 1, pFile);
 
 	// Start the parsing
 	pDocumentSet = new BsonDocumentSet();
 
-	while (nBufferOffset < nFileSize)
+	while (nOffsetInFile < nFileSize)
 	{
 		unsigned int documentSize = BsonDocumentSet::readDocumentSize(sFileContent + nBufferOffset);
+
+		if (documentSize + nBufferOffset > nBufferSize)
+		{
+			UInt nBytesToRead = MAX_SEGMENT_SIZE;
+			if (nBytesToRead + nOffsetInFile > nFileSize)
+			{
+				nBytesToRead = nFileSize - nOffsetInFile;
+			}
+
+			memset(sFileContent, 0, MAX_SEGMENT_SIZE + 1);
+			fseek(pFile, nOffsetInFile, SEEK_SET);
+			fread(sFileContent, nBytesToRead, 1, pFile);
+			nBufferOffset = 0;
+		}
+
 		BsonDocument* pDocument = pDocumentSet->parseDocument(sFileContent + nBufferOffset, documentSize);
 		pDocumentSet->m_documentList.push_back(pDocument);
 		nBufferOffset += documentSize;
+		nOffsetInFile += documentSize;
 	}
 
 	fclose(pFile);

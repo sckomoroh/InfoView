@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'CustomTextViewWidget.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.2.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.3.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'CustomTextViewWidget.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.2.1. It"
+#error "This file was generated using the moc from 5.3.2. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,12 +20,12 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_CustomTextViewWidget_t {
     QByteArrayData data[9];
-    char stringdata[124];
+    char stringdata[123];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    offsetof(qt_meta_stringdata_CustomTextViewWidget_t, stringdata) + ofs \
-        - idx * sizeof(QByteArrayData) \
+    qptrdiff(offsetof(qt_meta_stringdata_CustomTextViewWidget_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData)) \
     )
 static const qt_meta_stringdata_CustomTextViewWidget_t qt_meta_stringdata_CustomTextViewWidget = {
     {
@@ -42,7 +42,7 @@ QT_MOC_LITERAL(8, 108, 14)
     "CustomTextViewWidget\0showSearchArea\0"
     "\0doubleClicked\0CustomTextViewLine*\0"
     "pLine\0onCopyAction\0onSelectAllAction\0"
-    "onModelUpdated\0"
+    "onModelUpdated"
 };
 #undef QT_MOC_LITERAL
 
@@ -60,13 +60,13 @@ static const uint qt_meta_data_CustomTextViewWidget[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   39,    2, 0x06,
-       3,    1,   40,    2, 0x06,
+       1,    0,   39,    2, 0x06 /* Public */,
+       3,    1,   40,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    0,   43,    2, 0x08,
-       7,    0,   44,    2, 0x08,
-       8,    0,   45,    2, 0x08,
+       6,    0,   43,    2, 0x08 /* Private */,
+       7,    0,   44,    2, 0x08 /* Private */,
+       8,    0,   45,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
