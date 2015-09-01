@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'MongoEventWidget.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.2.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.3.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'MongoEventWidget.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.2.1. It"
+#error "This file was generated using the moc from 5.3.2. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,12 +20,12 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MongoEventWidget_t {
     QByteArrayData data[8];
-    char stringdata[120];
+    char stringdata[119];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    offsetof(qt_meta_stringdata_MongoEventWidget_t, stringdata) + ofs \
-        - idx * sizeof(QByteArrayData) \
+    qptrdiff(offsetof(qt_meta_stringdata_MongoEventWidget_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData)) \
     )
 static const qt_meta_stringdata_MongoEventWidget_t qt_meta_stringdata_MongoEventWidget = {
     {
@@ -40,7 +40,7 @@ QT_MOC_LITERAL(7, 98, 20)
     },
     "MongoEventWidget\0onEventsStartParsing\0"
     "\0onEventsItemParsed\0iCurrent\0iTotal\0"
-    "onEventsCompleteParsing\0onApplyButtonClicked\0"
+    "onEventsCompleteParsing\0onApplyButtonClicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -58,10 +58,10 @@ static const uint qt_meta_data_MongoEventWidget[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   34,    2, 0x08,
-       3,    2,   35,    2, 0x08,
-       6,    0,   40,    2, 0x08,
-       7,    0,   41,    2, 0x08,
+       1,    0,   34,    2, 0x08 /* Private */,
+       3,    2,   35,    2, 0x08 /* Private */,
+       6,    0,   40,    2, 0x08 /* Private */,
+       7,    0,   41,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,

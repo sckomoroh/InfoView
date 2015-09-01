@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'LogViewForm.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.2.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.3.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -13,7 +13,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'LogViewForm.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.2.1. It"
+#error "This file was generated using the moc from 5.3.2. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -21,12 +21,12 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_LogViewForm_t {
     QByteArrayData data[15];
-    char stringdata[235];
+    char stringdata[234];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    offsetof(qt_meta_stringdata_LogViewForm_t, stringdata) + ofs \
-        - idx * sizeof(QByteArrayData) \
+    qptrdiff(offsetof(qt_meta_stringdata_LogViewForm_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData)) \
     )
 static const qt_meta_stringdata_LogViewForm_t qt_meta_stringdata_LogViewForm = {
     {
@@ -52,7 +52,7 @@ QT_MOC_LITERAL(14, 218, 15)
     "searchResult\0onApplyButtonClicked\0"
     "onSearchClicked\0onSearchAllClicked\0"
     "onCloseClicked\0onShowSearchArea\0"
-    "onStartParse\0onCompleteParse\0"
+    "onStartParse\0onCompleteParse"
 };
 #undef QT_MOC_LITERAL
 
@@ -70,17 +70,17 @@ static const uint qt_meta_data_LogViewForm[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    2,   59,    2, 0x06,
-       5,    1,   64,    2, 0x06,
+       1,    2,   59,    2, 0x06 /* Public */,
+       5,    1,   64,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       8,    0,   67,    2, 0x08,
-       9,    0,   68,    2, 0x08,
-      10,    0,   69,    2, 0x08,
-      11,    0,   70,    2, 0x08,
-      12,    0,   71,    2, 0x08,
-      13,    0,   72,    2, 0x08,
-      14,    0,   73,    2, 0x08,
+       8,    0,   67,    2, 0x08 /* Private */,
+       9,    0,   68,    2, 0x08 /* Private */,
+      10,    0,   69,    2, 0x08 /* Private */,
+      11,    0,   70,    2, 0x08 /* Private */,
+      12,    0,   71,    2, 0x08 /* Private */,
+      13,    0,   72,    2, 0x08 /* Private */,
+      14,    0,   73,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString, QMetaType::Bool,    3,    4,

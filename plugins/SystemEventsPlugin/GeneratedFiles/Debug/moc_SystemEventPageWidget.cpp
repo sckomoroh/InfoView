@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'SystemEventPageWidget.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.2.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.3.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'SystemEventPageWidget.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.2.1. It"
+#error "This file was generated using the moc from 5.3.2. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,12 +20,12 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_SystemEventPageWidget_t {
     QByteArrayData data[18];
-    char stringdata[269];
+    char stringdata[268];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    offsetof(qt_meta_stringdata_SystemEventPageWidget_t, stringdata) + ofs \
-        - idx * sizeof(QByteArrayData) \
+    qptrdiff(offsetof(qt_meta_stringdata_SystemEventPageWidget_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData)) \
     )
 static const qt_meta_stringdata_SystemEventPageWidget_t qt_meta_stringdata_SystemEventPageWidget = {
     {
@@ -54,7 +54,7 @@ QT_MOC_LITERAL(17, 245, 22)
     "index\0oldIndex\0onCurrentProviderChanged\0"
     "onFilterApplyClicked\0onTableContextMenu\0"
     "point\0onIncludeEvent\0onExcludeEvent\0"
-    "onSelectAllProviders\0onUnselectAllProviders\0"
+    "onSelectAllProviders\0onUnselectAllProviders"
 };
 #undef QT_MOC_LITERAL
 
@@ -72,17 +72,17 @@ static const uint qt_meta_data_SystemEventPageWidget[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   69,    2, 0x08,
-       3,    2,   70,    2, 0x08,
-       6,    0,   75,    2, 0x08,
-       7,    2,   76,    2, 0x08,
-      10,    2,   81,    2, 0x08,
-      11,    0,   86,    2, 0x08,
-      12,    1,   87,    2, 0x08,
-      14,    0,   90,    2, 0x08,
-      15,    0,   91,    2, 0x08,
-      16,    0,   92,    2, 0x08,
-      17,    0,   93,    2, 0x08,
+       1,    0,   69,    2, 0x08 /* Private */,
+       3,    2,   70,    2, 0x08 /* Private */,
+       6,    0,   75,    2, 0x08 /* Private */,
+       7,    2,   76,    2, 0x08 /* Private */,
+      10,    2,   81,    2, 0x08 /* Private */,
+      11,    0,   86,    2, 0x08 /* Private */,
+      12,    1,   87,    2, 0x08 /* Private */,
+      14,    0,   90,    2, 0x08 /* Private */,
+      15,    0,   91,    2, 0x08 /* Private */,
+      16,    0,   92,    2, 0x08 /* Private */,
+      17,    0,   93,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,

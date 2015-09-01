@@ -1,4 +1,4 @@
-	#include "MainWindow.h"
+#include "MainWindow.h"
 
 #include <QFileDialog>
 #include <QFileInfo>
@@ -51,7 +51,11 @@ MainWindow::~MainWindow()
 
 void MainWindow::onOpenAction()
 {
+	qDebug() << "Try to open folder\nGet folder name";
+
 	QString folder = QFileDialog::getExistingDirectory();
+
+	qDebug() << "The open folder is " << folder;
 
 	if (folder.isEmpty() || folder.isNull())
 	{
