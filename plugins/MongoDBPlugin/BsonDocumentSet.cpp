@@ -89,10 +89,6 @@ BsonDocumentSet* BsonDocumentSetFactory::createFromDump(const char* sFileName)
 			fseek(pFile, nOffsetInFile, SEEK_SET);
 			fread(sFileContent, nBytesToRead, 1, pFile);
 			nBufferOffset = 0;
-
-			documentSize = BsonDocumentSet::readDocumentSize(sFileContent + nBufferOffset);
-
-			int a = 0;
 		}
 
 		BsonDocument* pDocument = pDocumentSet->parseDocument(sFileContent + nBufferOffset, documentSize);
