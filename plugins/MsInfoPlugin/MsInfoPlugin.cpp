@@ -1,8 +1,11 @@
 #include "msinfoplugin.h"
 
+#define LOG_PREFIX "<MS_INFO> "
+
 MsInfoPlugin::MsInfoPlugin()
 	: m_pluginWidget(NULL)
 {
+	m_logger = getLogClientInstance();
 }
 
 MsInfoPlugin::~MsInfoPlugin()
@@ -17,6 +20,7 @@ QWidget* MsInfoPlugin::getPluginWidget()
 {
 	if (m_pluginWidget == NULL)
 	{
+		m_logger->Info(LOG_PREFIX"Creating 'Ms information' widget");
 		m_pluginWidget = new MsInfoWidget();
 	}
 
@@ -36,11 +40,17 @@ wchar_t* MsInfoPlugin::getPluginId()
 void MsInfoPlugin::initPluginData(wchar_t* path)
 {
 	QString workFolder = QString::fromWCharArray(path, wcslen(path));
+	std::string workFolderStr = workFolder.toStdString();
+
+	m_logger->Info(LOG_PREFIX"Init plugin data from the folder %s", workFolderStr.c_str());
+
 	m_pluginWidget->parse(workFolder);
 }
 
 void MsInfoPlugin::resetPluginData()
 {
+	m_logger->Info(LOG_PREFIX"Clean data of plugin");
+
 	m_pluginWidget->reset();
 }
 
@@ -51,6 +61,9 @@ QImage* MsInfoPlugin::getPluginIcon()
 
 IPlugin* createQtPlugin()
 {
+	ILogClient* logClient = getLogClientInstance();
+	logClient->Info(LOG_PREFIX"Creating plugin instance");
+
 	return new MsInfoPlugin();
 }
 

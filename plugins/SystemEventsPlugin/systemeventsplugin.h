@@ -1,6 +1,7 @@
 #ifndef SYSTEMEVENTSPLUGIN_H
 #define SYSTEMEVENTSPLUGIN_H
 
+#define NEED_PLUGIN_EXPORT
 #include "IPlugin.h"
 #include "SystemEventWidget.h"
 

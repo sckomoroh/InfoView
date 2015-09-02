@@ -10,8 +10,7 @@
 
 #include "SearchLineData.h"
 
-#include "FileLogger.h"
-#include "LogManager.h"
+#include "ILogClient.h"
 
 #define RECENT_OPENED_NAME "recentOpened"
 
@@ -19,9 +18,6 @@ MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
 	, m_applicationSettings(QSettings::NativeFormat, QSettings::UserScope, "SelfProduction", "Info view")
 {
-	ILogger* pFileLogger = new CFileLogger("SFInfoView.log");
-	CLogger::RegisterLogger("FILE", pFileLogger);
-
 	ui.setupUi(this);
 
 	m_pDownloadDialog = new AmazonDownloadDialog(this);

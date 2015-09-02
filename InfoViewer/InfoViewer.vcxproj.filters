@@ -57,17 +57,14 @@
     <Filter Include="Source Files\CustomTextView">
       <UniqueIdentifier>{cbbb3067-65d5-4842-aef4-ea40a6d33162}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Logger">
-      <UniqueIdentifier>{585dce54-57e3-4456-ab17-4f86bf1ce97d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\LogParser">
-      <UniqueIdentifier>{5768fc1b-07f0-4810-bca7-f571dcb2dbf0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\SearchAll">
       <UniqueIdentifier>{55da2a8d-001d-42c0-9246-38874cd6b06b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Unzip">
       <UniqueIdentifier>{d0bbb502-e187-4306-94f0-f834ffa88533}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\LogParser">
+      <UniqueIdentifier>{b2b56eef-5bb5-448a-a8e3-053a964fddff}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -167,27 +164,6 @@
     <ClCompile Include="CustomTextViewSearchLine.cpp">
       <Filter>Source Files\CustomTextView</Filter>
     </ClCompile>
-    <ClCompile Include="FileLogger.cpp">
-      <Filter>Source Files\Logger</Filter>
-    </ClCompile>
-    <ClCompile Include="LogManager.cpp">
-      <Filter>Source Files\Logger</Filter>
-    </ClCompile>
-    <ClCompile Include="LogLineData.cpp">
-      <Filter>Source Files\LogParser</Filter>
-    </ClCompile>
-    <ClCompile Include="LogParser.cpp">
-      <Filter>Source Files\LogParser</Filter>
-    </ClCompile>
-    <ClCompile Include="LogParserThread.cpp">
-      <Filter>Source Files\LogParser</Filter>
-    </ClCompile>
-    <ClCompile Include="LogStorage.cpp">
-      <Filter>Source Files\LogParser</Filter>
-    </ClCompile>
-    <ClCompile Include="LogViewForm.cpp">
-      <Filter>Source Files\LogParser</Filter>
-    </ClCompile>
     <ClCompile Include="UnZipThread.cpp">
       <Filter>Source Files\Unzip</Filter>
     </ClCompile>
@@ -196,6 +172,21 @@
     </ClCompile>
     <ClCompile Include="SearchResultWidget.cpp">
       <Filter>Source Files\SearchAll</Filter>
+    </ClCompile>
+    <ClCompile Include="LogViewForm.cpp">
+      <Filter>Source Files\LogParser</Filter>
+    </ClCompile>
+    <ClCompile Include="LogStorage.cpp">
+      <Filter>Source Files\LogParser</Filter>
+    </ClCompile>
+    <ClCompile Include="LogParserThread.cpp">
+      <Filter>Source Files\LogParser</Filter>
+    </ClCompile>
+    <ClCompile Include="LogParser.cpp">
+      <Filter>Source Files\LogParser</Filter>
+    </ClCompile>
+    <ClCompile Include="LogLineData.cpp">
+      <Filter>Source Files\LogParser</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -258,9 +249,6 @@
     <ClInclude Include="GeneratedFiles\ui_SearchResultWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="IPlugin.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="amazon_utils_c.h">
       <Filter>Header Files\Amazon</Filter>
     </ClInclude>
@@ -305,6 +293,9 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ILogManager.h">
+      <Filter>Header Files\Logger</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

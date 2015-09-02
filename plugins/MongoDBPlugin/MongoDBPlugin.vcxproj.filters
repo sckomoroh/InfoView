@@ -51,9 +51,6 @@
     <ClInclude Include="mongodbplugin_global.h">
       <Filter>plugin\headers</Filter>
     </ClInclude>
-    <ClInclude Include="IPlugin.h">
-      <Filter>plugin\headers</Filter>
-    </ClInclude>
     <ClInclude Include="MongoEventData.h">
       <Filter>widget\headers</Filter>
     </ClInclude>
