@@ -137,9 +137,6 @@
     <ClInclude Include="SystemEventStorage.h">
       <Filter>widget\headers</Filter>
     </ClInclude>
-    <ClInclude Include="IPlugin.h">
-      <Filter>plugin\headers</Filter>
-    </ClInclude>
     <ClInclude Include="IStorageListener.h">
       <Filter>widget\headers</Filter>
     </ClInclude>

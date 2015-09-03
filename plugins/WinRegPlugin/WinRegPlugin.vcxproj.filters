@@ -104,9 +104,6 @@
     <ClInclude Include="GeneratedFiles\ui_RegWidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="IPlugin.h">
-      <Filter>plugin\headers</Filter>
-    </ClInclude>
     <ClInclude Include="winregplugin.h">
       <Filter>plugin\headers</Filter>
     </ClInclude>

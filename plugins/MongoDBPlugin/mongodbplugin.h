@@ -1,7 +1,9 @@
 #ifndef MONGODBPLUGIN_H
 #define MONGODBPLUGIN_H
 
+#define NEED_PLUGIN_EXPORT
 #include "IPlugin.h"
+
 #include "MongoWidget.h"
 
 class MongoDBPlugin : public IQtPlugin

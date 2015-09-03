@@ -3,6 +3,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include <QList>
+#include <QMap>
 #include <QSettings>
 #include <QLibrary>
 #include <QAxWidget>
@@ -12,7 +13,6 @@
 #include "LogViewForm.h"
 #include "AmazonDownloadDialog.h"
 #include "IPlugin.h"
-
 
 class MainWindow : public QMainWindow
 {

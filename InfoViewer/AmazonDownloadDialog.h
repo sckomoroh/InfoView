@@ -5,15 +5,17 @@
 #include "ui_AmazonDownloadDialog.h"
 
 #include "BucketModel.h"
-#include "Amazon.h"
+#include "IAmazon.h"
 #include "UnZipThread.h"
 
-class AmazonDownloadDialog : public QDialog
+class AmazonDownloadDialog
+	: public QDialog
+	, public IAmazonListener
 {
 	Q_OBJECT
 private:
 	Ui::AmazonDownloadDialog ui;
-	Amazon					m_amazon;
+	IAmazon*				m_amazon;
 	BucketModel*			m_pBucketModel;
 	UnZipThread*			m_pUnZipThread;
 	QString					m_targetFolder;
@@ -28,8 +30,16 @@ public:
 	}
 
 private:
-    void enableControls(bool bEnable = true);
+	void enableControls(bool bEnable = true);
 	void unzip();
+
+private:
+	// Amazon handlers
+	virtual void onStartRetrievingList();
+	virtual void onObjectListRetrieved(const QList<AmazonObject>& objects);
+	virtual void onDownloadingStarted();
+	virtual void onDownloadingProgress(qint64 iCurrent, qint64 iTotal);
+	virtual void onDownloadingCompleted();
 
 private slots:
 	void onSearchClicked();
@@ -43,16 +53,20 @@ private slots:
 	void onUnZipProgress(uint iCurrent, uint iTotal);
 	void onUnZipComplete();
 
-	// Amazon handlers
-	void onStartRetrievingList();
-	void onObjectListRetrieved(const QList<AmazonObject>& objects);
-
-	void onDownloadingStarted();
-	void onDownloadingProgress(qint64 iCurrent, qint64 iTotal);
-	void onDownloadingCompleted();
+	void startRetrievingListHandler();
+	void objectListRetrievedHandler(const QList<AmazonObject>& objects);
+	void downloadingStartedHandler();
+	void downloadingProgressHandler(qint64 iCurrent, qint64 iTotal);
+	void downloadingCompletedHandler();
 
 signals:
 	void logsCompleted();
+
+	void startRetrievingList();
+	void objectListRetrieved(const QList<AmazonObject>& objects);
+	void downloadingStarted();
+	void downloadingProgress(qint64 iCurrent, qint64 iTotal);
+	void downloadingCompleted();
 };
 
 #endif // AMAZONDOWNLOADDIALOG_H

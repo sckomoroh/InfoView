@@ -2,12 +2,17 @@
 
 #include <QFileDialog>
 #include <QDir>
+#include <QDebug>
 
 AmazonDownloadDialog::AmazonDownloadDialog(QWidget *parent)
 	: QDialog(parent)
-	, m_amazon(this)
+	, m_amazon(NULL)
 {
 	ui.setupUi(this);
+
+	m_amazon = getAmazonInstance();
+	m_amazon->addListener(this);
+	m_amazon->refreshConfig();
 
 	m_pBucketModel = new BucketModel(this);
 	m_pUnZipThread = new UnZipThread(this);
@@ -26,19 +31,19 @@ AmazonDownloadDialog::AmazonDownloadDialog(QWidget *parent)
 	connect(ui.downloadButton, SIGNAL(clicked()), SLOT(onDownloadClicked()));
 	connect(ui.browseButton, SIGNAL(clicked()), SLOT(onBrowseButtonClicked()));
 
-	connect(&m_amazon, SIGNAL(startRetrievingList()), SLOT(onStartRetrievingList()));
-	connect(&m_amazon, SIGNAL(downloadingStarted()), SLOT(onDownloadingStarted()));
-	connect(&m_amazon, SIGNAL(downloadingCompleted()), SLOT(onDownloadingCompleted()));
+	connect(this, SIGNAL(startRetrievingList()), SLOT(startRetrievingListHandler()));
+	connect(this, SIGNAL(downloadingStarted()), SLOT(downloadingStartedHandler()));
+	connect(this, SIGNAL(downloadingCompleted()), SLOT(downloadingCompletedHandler()));
 
     connect(
-        &m_amazon,
+        this,
         SIGNAL(objectListRetrieved(const QList<AmazonObject>&)),
-        SLOT(onObjectListRetrieved(const QList<AmazonObject>&)));
+        SLOT(objectListRetrievedHandler(const QList<AmazonObject>&)));
 
     connect(
-        &m_amazon,
+        this,
         SIGNAL(downloadingProgress(qint64, qint64)),
-        SLOT(onDownloadingProgress(qint64, qint64)));
+        SLOT(downloadingProgressHandler(qint64, qint64)));
 
 	connect(m_pUnZipThread, SIGNAL(unzipStarted()), SLOT(onUnZipStarted()));
 	connect(m_pUnZipThread, SIGNAL(unzipComplete()), SLOT(onUnZipComplete()));
@@ -56,7 +61,7 @@ void AmazonDownloadDialog::onDownloadClicked()
 
     enableControls(false);
 
-	m_amazon.startDownload(ui.linkLineEdit->text(), ui.locationLineEdit->text());
+	m_amazon->startDownload(ui.linkLineEdit->text(), ui.locationLineEdit->text());
 }
 
 void AmazonDownloadDialog::onSearchClicked()
@@ -66,10 +71,10 @@ void AmazonDownloadDialog::onSearchClicked()
     enableControls(false);
 
 	m_pBucketModel->resetModel();
-	m_amazon.startListObjects();
+	m_amazon->startListObjects();
 }
 
-void AmazonDownloadDialog::onDownloadingStarted()
+void AmazonDownloadDialog::downloadingStartedHandler()
 {
 	qDebug() << "[UI] Download started";
 
@@ -79,13 +84,13 @@ void AmazonDownloadDialog::onDownloadingStarted()
 	ui.phaseLabel->show();
 }
 
-void AmazonDownloadDialog::onDownloadingProgress(qint64 iCurrent, qint64 iTotal)
+void AmazonDownloadDialog::downloadingProgressHandler(qint64 iCurrent, qint64 iTotal)
 {
 	ui.progressBar->setMaximum(iTotal);
 	ui.progressBar->setValue(iCurrent);
 }
 
-void AmazonDownloadDialog::onDownloadingCompleted()
+void AmazonDownloadDialog::downloadingCompletedHandler()
 {
 	qDebug() << "[UI] Download completed";
 
@@ -97,7 +102,7 @@ void AmazonDownloadDialog::onDownloadingCompleted()
 	unzip();
 }
 
-void AmazonDownloadDialog::onStartRetrievingList()
+void AmazonDownloadDialog::startRetrievingListHandler()
 {
     qDebug() << "[UI] Start retrieving buckets";
 
@@ -110,7 +115,7 @@ void AmazonDownloadDialog::onStartRetrievingList()
 	ui.phaseLabel->show();
 }
 
-void AmazonDownloadDialog::onObjectListRetrieved(const QList<AmazonObject>& objectList)
+void AmazonDownloadDialog::objectListRetrievedHandler(const QList<AmazonObject>& objectList)
 {
     qDebug() << "[UI] Complete retrieving buckets";
 
@@ -177,8 +182,8 @@ void AmazonDownloadDialog::enableControls(bool bEnable)
 
 void AmazonDownloadDialog::unzip()
 {
-	QString zipFileName = m_amazon.fileName();
-    m_targetFolder = m_amazon.fileFolder() + "/" + m_amazon.baseFileName();
+	QString zipFileName = m_amazon->fileName();
+    m_targetFolder = m_amazon->fileFolder() + "/" + m_amazon->baseFileName();
 
 	QDir targetFolder(m_targetFolder);
 	if (!targetFolder.exists())
@@ -222,4 +227,29 @@ void AmazonDownloadDialog::onUnZipComplete()
 	enableControls();
 
 	emit logsCompleted();
+}
+
+void AmazonDownloadDialog::onStartRetrievingList()
+{
+	emit startRetrievingList();
+}
+
+void AmazonDownloadDialog::onObjectListRetrieved(const QList<AmazonObject>& objects)
+{
+	emit objectListRetrieved(objects);
+}
+
+void AmazonDownloadDialog::onDownloadingStarted()
+{
+	emit downloadingStarted();
+}
+
+void AmazonDownloadDialog::onDownloadingProgress(qint64 iCurrent, qint64 iTotal)
+{
+	emit downloadingProgress(iCurrent, iTotal);
+}
+
+void AmazonDownloadDialog::onDownloadingCompleted()
+{
+	emit downloadingCompleted();
 }

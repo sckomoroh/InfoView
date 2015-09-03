@@ -1,6 +1,7 @@
 #ifndef RECOVERYPOINTSPLUGIN_H
 #define RECOVERYPOINTSPLUGIN_H
 
+#define NEED_PLUGIN_EXPORT
 #include "IPlugin.h"
 #include "RecoveryPointsWidget.h"
 

@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QAbstractItemModel>
 
-#include "amazon.h"
+#include "IAmazon.h"
 
 class BucketModel : public QAbstractItemModel
 {
