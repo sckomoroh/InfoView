@@ -1,6 +1,7 @@
 #ifndef WINREGPLUGIN_H
 #define WINREGPLUGIN_H
 
+#define NEED_PLUGIN_EXPORT
 #include "IPlugin.h"
 #include "RegWidget.h"
 
