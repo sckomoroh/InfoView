@@ -12,12 +12,16 @@ MongoJobStorage::~MongoJobStorage()
 
 void MongoJobStorage::clear()
 {
+	fireBeginChange();
+
 	for each (MongoJobData* pObject in m_jobs)
 	{
 		delete pObject;
 	}
 
 	m_jobs.clear();
+
+	fireEndChange();
 }
 
 void MongoJobStorage::addItem(MongoJobData* pItem)
