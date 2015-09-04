@@ -95,3 +95,20 @@ bool LogClientImpl::Debug(char* format, ...)
 
 	return result;
 }
+
+bool LogClientImpl::Warn(char* format, ...)
+{
+	if (m_fileLogger == NULL)
+	{
+		return false;
+	}
+
+	va_list arg_list;
+	va_start(arg_list, format);
+
+	bool result = CLogger::GetLogger()->WarnV(format, arg_list);
+
+	va_end(arg_list);
+
+	return result;
+}

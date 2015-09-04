@@ -7,10 +7,12 @@ public:
 	virtual bool Error(char*, ...);
 	virtual bool Info(char*, ...);
 	virtual bool Debug(char*, ...);
+	virtual bool Warn(char*, ...);
 
 	virtual bool ErrorV(char*, va_list);
 	virtual bool InfoV(char*, va_list);
 	virtual bool DebugV(char*, va_list);
+	virtual bool WarnV(char*, va_list);
 
 	virtual ~CFileLogger(void);
 	CFileLogger(char*);
