@@ -71,6 +71,21 @@ bool CLogManager::Error(char* s_format_str, ...) {
 	return true;
 }
 // ---------------------------------------------------------------------------------
+bool CLogManager::Warn(char* s_format_str, ...) {
+	va_list arg_list;
+	va_start(arg_list, s_format_str);
+
+	CLoggerMap::iterator iter = m_loggers.begin();
+	while (iter != m_loggers.end()){
+		(iter->second)->WarnV(s_format_str, arg_list);
+		iter++;
+	}
+
+	va_end(arg_list);
+
+	return true;
+}
+// ---------------------------------------------------------------------------------
 bool CLogManager::ErrorV(char* s_format_str, va_list arg_list) {
 	CLoggerMap::iterator iter = m_loggers.begin();
 	while(iter != m_loggers.end()){
@@ -93,6 +108,15 @@ bool CLogManager::DebugV(char* s_format_str, va_list arg_list) {
 	CLoggerMap::iterator iter = m_loggers.begin();
 	while(iter != m_loggers.end()){
 		(iter->second)->DebugV(s_format_str, arg_list);
+		iter++;
+	}
+	return true;
+}
+// ---------------------------------------------------------------------------------
+bool CLogManager::WarnV(char* s_format_str, va_list arg_list) {
+	CLoggerMap::iterator iter = m_loggers.begin();
+	while (iter != m_loggers.end()){
+		(iter->second)->WarnV(s_format_str, arg_list);
 		iter++;
 	}
 	return true;
@@ -149,6 +173,15 @@ void CLogger::Debug(char* s_format_str, ...) {
 	va_start(arg_list, s_format_str);
 
 	m_pLogManager->DebugV(s_format_str, arg_list);
+
+	va_end(arg_list);
+}
+// ---------------------------------------------------------------------------------
+void CLogger::Warn(char* s_format_str, ...) {
+	va_list arg_list;
+	va_start(arg_list, s_format_str);
+
+	m_pLogManager->WarnV(s_format_str, arg_list);
 
 	va_end(arg_list);
 }

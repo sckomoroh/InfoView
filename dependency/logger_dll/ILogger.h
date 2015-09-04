@@ -7,15 +7,17 @@ class ILogger {
 public:
 	virtual ~ILogger(){ };
 
-	enum {ERROR_LEVEL = 1, DEBUG_LEVEL = 2, INFO_LEVEL = 4};
+	enum {ERROR_LEVEL = 1, DEBUG_LEVEL = 2, INFO_LEVEL = 4, WARN_LEVEL = 8};
 
 	virtual bool Error(char*, ...)=0;
 	virtual bool Info(char*, ...)=0;	
-	virtual bool Debug(char*, ...)=0;
+	virtual bool Debug(char*, ...) = 0;
+	virtual bool Warn(char*, ...) = 0;
 
 	virtual bool ErrorV(char*, va_list)=0;
 	virtual bool InfoV(char*, va_list)=0;
-	virtual bool DebugV(char*, va_list)=0;
+	virtual bool DebugV(char*, va_list) = 0;
+	virtual bool WarnV(char*, va_list) = 0;
 
 	virtual void SetLogLevel(int log_level){
 		m_log_level = log_level;

@@ -13,7 +13,7 @@ CFileLogger::CFileLogger(char* s_file_name) {
 	InitializeCriticalSection(&m_csWrite);
 	m_s_file_name = new char[strlen(s_file_name) + 1];
 	strcpy_s(m_s_file_name, strlen(s_file_name) + 1, s_file_name);
-	m_log_level = ERROR_LEVEL | DEBUG_LEVEL | INFO_LEVEL;
+	m_log_level = ERROR_LEVEL | DEBUG_LEVEL | INFO_LEVEL | WARN_LEVEL;
 }
 
 CFileLogger::~CFileLogger(void) {
@@ -25,7 +25,16 @@ bool CFileLogger::InfoV(char* s_format_str, va_list arg_list){
 	if(!(m_log_level & INFO_LEVEL))
 		return false;
 
-	bool b_result = _LogMessage("[INFO] ", s_format_str, arg_list);
+	bool b_result = _LogMessage("[INFO]  ", s_format_str, arg_list);
+
+	return b_result;
+}
+// -------------------------------------------------------------------------------------
+bool CFileLogger::WarnV(char* s_format_str, va_list arg_list){
+	if (!(m_log_level & INFO_LEVEL))
+		return false;
+
+	bool b_result = _LogMessage("[WARN]  ", s_format_str, arg_list);
 
 	return b_result;
 }
@@ -70,6 +79,20 @@ bool CFileLogger::Info(char* s_format_str, ...){
 	va_start(arg_list, s_format_str);
 
 	bool b_result = _LogMessage("[INFO] ", s_format_str, arg_list);
+
+	va_end(arg_list);
+
+	return b_result;
+}
+// -------------------------------------------------------------------------------------
+bool CFileLogger::Warn(char* s_format_str, ...){
+	if (!(m_log_level & INFO_LEVEL))
+		return false;
+
+	va_list arg_list;
+	va_start(arg_list, s_format_str);
+
+	bool b_result = _LogMessage("[WARN]  ", s_format_str, arg_list);
 
 	va_end(arg_list);
 

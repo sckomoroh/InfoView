@@ -20,4 +20,5 @@ public:
 	virtual bool Error(char*, ...);
 	virtual bool Info(char*, ...);
 	virtual bool Debug(char*, ...);
+	virtual bool Warn(char*, ...);
 };
