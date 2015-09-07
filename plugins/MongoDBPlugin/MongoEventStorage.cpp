@@ -14,7 +14,7 @@ void MongoEventStorage::clear()
 {
 	fireBeginChange();
 
-	for each (MongoEventData* pItem in m_events)
+	foreach (MongoEventData* pItem, m_events)
 	{
 		delete pItem;
 	}

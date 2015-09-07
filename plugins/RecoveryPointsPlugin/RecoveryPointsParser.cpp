@@ -8,6 +8,7 @@ RecoveryPointsParser::RecoveryPointsParser()
 	: m_pListener(NULL)
 {
 	m_pStorage = new RecoveryPointsStorage;
+	m_logClient = getLogClientInstance();
 }
 
 RecoveryPointsParser::~RecoveryPointsParser()
@@ -26,6 +27,8 @@ RecoveryPointsStorage* RecoveryPointsParser::storage()
 
 void RecoveryPointsParser::parse(const QString& filePath)
 {
+	m_logClient->Info("<REC-PNT> Start parse folder %s", filePath.toStdString().c_str());
+
 	if (m_pListener != NULL)
 	{
 		m_pListener->onStartParsing();
@@ -56,7 +59,7 @@ void RecoveryPointsParser::parse(const QString& filePath)
 		}
 	}
 
-	qDebug() << "Parsing complete!";
+	m_logClient->Info("<REC-PNT> Parsing complete!");
 
 	if (m_pListener != NULL)
 	{
@@ -70,7 +73,7 @@ void RecoveryPointsParser::parseAgentFolder(const QFileInfo& fileInfo)
 	
 	if (!fileInfo.isDir())
 	{
-		//qDebug() << "WARNING: The file is not folder.";
+		m_logClient->Warn("<REC-PNT> The '%s' is not folder. Skip.", fileInfo.absoluteFilePath().toStdString().c_str());
 		return;
 	}
 
@@ -82,7 +85,7 @@ void RecoveryPointsParser::parseAgentFolder(const QFileInfo& fileInfo)
 	for each(QFileInfo rpFile in rpFiles)
 	{
 		index++;
-		//qDebug() << "INFO: Recovery point file: " << rpFile.fileName();
+		m_logClient->Debug("<REC-PNT> Recovery point file: %s", rpFile.fileName().toStdString().c_str());
 		RecoveryPointRecord* record = parseRecoveryPointFile(rpFile);
 		result.append(record);
 
@@ -91,7 +94,6 @@ void RecoveryPointsParser::parseAgentFolder(const QFileInfo& fileInfo)
 		if (progress != oldProgress)
 		{
 			oldProgress = progress;
-			//qDebug() << "    File processed " << progress << " %";
 		}
 
 		if (m_pListener != NULL)
@@ -106,7 +108,7 @@ void RecoveryPointsParser::parseAgentFolder(const QFileInfo& fileInfo)
 	}
 	else
 	{
-		qDebug() << "result is empty";
+		m_logClient->Debug("<REC-PNT> Result is empty");
 	}
 }
 
@@ -116,13 +118,13 @@ RecoveryPointRecord* RecoveryPointsParser::parseRecoveryPointFile(const QFileInf
 	QFile rpFile(fileInfo.absoluteFilePath());
 	if (!rpFile.open(QIODevice::ReadOnly))
 	{
-		//qDebug() << "WARNING: Unable to open XML file";
+		m_logClient->Warn("<REC-PNT> Unable to open XML file");
 		return NULL;
 	}
 
 	if (!rpDocument.setContent(&rpFile)) 
 	{
-		//qDebug() << "WARNING: Unable to parse XML file";
+		m_logClient->Warn("<REC-PNT> Unable to parse XML file");
 		rpFile.close();
 		return NULL;
 	}

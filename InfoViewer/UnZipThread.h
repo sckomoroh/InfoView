@@ -4,6 +4,7 @@
 #include <QThread>
 
 #include "IZip.h"
+#include "ILogClient.h"
 
 class UnZipThread : public QThread
 {
@@ -12,6 +13,8 @@ private:
 	IZip* m_pZipInstance;
 	QString m_zipFileName;
 	QString m_targetFolder;
+
+	ILogClient* m_logClient;
 
 public:
 	UnZipThread(QObject *parent);

@@ -4,10 +4,15 @@
 #include <QDomDocument>
 #include <QDebug>
 
+#define ROOT_CATEGORY_NAME		"Ms information"
+#define CATEGORY_ELEMENT_NAME	"Category"
+#define DATA_ELEMENT_NAME		"Data"
+
 MsInfoParser::MsInfoParser()
 	: m_pListener(NULL)
 {
 	m_pStorage = new MsInfoStorage;
+	m_logClient = getLogClientInstance();
 }
 
 MsInfoParser::~MsInfoParser()
@@ -17,6 +22,8 @@ MsInfoParser::~MsInfoParser()
 
 void MsInfoParser::parseFile(const QString& fileName)
 {
+	m_logClient->Info("<MS-INFO> Start parse file %s", fileName.toStdString().c_str());
+
 	fireParsingStart();
 
 	m_pStorage->reset();
@@ -25,7 +32,7 @@ void MsInfoParser::parseFile(const QString& fileName)
 
 	if (!msInfoFile.open(QIODevice::ReadOnly))
 	{
-		qDebug() << "Unable to open MS Info file";
+		m_logClient->Error("<MS-INFO> Unable to open MS Info file");
 		fireParsingComplete();
 		return;
 	}
@@ -33,7 +40,7 @@ void MsInfoParser::parseFile(const QString& fileName)
 	QDomDocument doc;
 	if (!doc.setContent(&msInfoFile))
 	{
-		qDebug() << "Unable to set content";
+		m_logClient->Error("<MS-INFO> Unable to parse XML content");
 		msInfoFile.close();
 		fireParsingComplete();
 		return;
@@ -44,11 +51,13 @@ void MsInfoParser::parseFile(const QString& fileName)
 	QDomElement rootElement = doc.documentElement();
 
 	MsInfoCategory* rootCategory = new MsInfoCategory();
-	rootCategory->setCategoryName("Ms information");
+	rootCategory->setCategoryName(ROOT_CATEGORY_NAME);
 
 	parseCategory(rootElement, rootCategory);
 
 	m_pStorage->setRootCategory(rootCategory);
+
+	m_logClient->Debug("<MS-INFO> Parsing completed");
 
 	fireParsingComplete();
 }
@@ -74,7 +83,7 @@ QList<QDomElement> MsInfoParser::allElementsByTagName(const QDomElement& element
 
 void MsInfoParser::parseCategory(const QDomElement& element, MsInfoCategory* pParentCategory)
 {
-	QList<QDomElement> categories = allElementsByTagName(element, "Category");
+	QList<QDomElement> categories = allElementsByTagName(element, CATEGORY_ELEMENT_NAME);
 	QList<QDomElement>::iterator iter = categories.begin();
 	for (; iter != categories.end(); iter++)
 	{
@@ -94,7 +103,7 @@ void MsInfoParser::parseCategory(const QDomElement& element, MsInfoCategory* pPa
 
 void MsInfoParser::parseData(const QDomElement& element, MsInfoCategory* pCategory)
 {
-	QList<QDomElement> categories = allElementsByTagName(element, "Data");
+	QList<QDomElement> categories = allElementsByTagName(element, DATA_ELEMENT_NAME);
 	QList<QDomElement>::iterator iter = categories.begin();
 	bool fillHeader = true;
 

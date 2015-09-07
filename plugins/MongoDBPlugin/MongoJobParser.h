@@ -6,11 +6,15 @@
 #include "IMongoJobParserListener.h"
 #include "MongoJobStorage.h"
 
+#include "ILogClient.h"
+
 class MongoJobParser
 {
 private:
 	QList<IJobsParserListener*> m_pListeners;
 	MongoJobStorage* m_pStorage;
+
+	ILogClient* m_logClient;
 
 public:
 	MongoJobParser();

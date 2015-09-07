@@ -14,12 +14,13 @@ void MongoJobStorage::clear()
 {
 	fireBeginChange();
 
-	for each (MongoJobData* pObject in m_jobs)
+	foreach (MongoJobData* pObject, m_jobs)
 	{
 		delete pObject;
 	}
 
 	m_jobs.clear();
+	m_filteredJobs.clear();
 
 	fireEndChange();
 }

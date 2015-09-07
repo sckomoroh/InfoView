@@ -3,9 +3,18 @@
 #include <QFile>
 #include <QTextStream>
 
+#define ERROR_PREFIX    "ERRO"
+#define INFO_PREFIX     "INFO"
+#define WARN_PREFIX     "WARN"
+#define DEBUG_PREFIX    "DEBU"
+#define TRACE_PREFIX    "TRAC"
+#define FATAL_PREFIX    "FATA"
+
+
 LogParser::LogParser()
 	: m_pListener(NULL)
 {
+	m_logClient = getLogClientInstance();
 	m_pStorage = new LogStorage;
 }
 
@@ -18,10 +27,16 @@ void LogParser::parseFile(const QString& fileName)
 {
 	fireStartParse();
 
+	m_logClient->Info("Start parse file '%s'", fileName.toStdString().c_str());
+
 	QList<LogLineData*> result;
 
 	QFile file(fileName);
-	file.open(QIODevice::ReadOnly | QIODevice::Text);
+	if (file.open(QIODevice::ReadOnly | QIODevice::Text) == false)
+	{
+		m_logClient->Error("Unable to open file '%s' with error '%s'", fileName.toStdString().c_str(), file.errorString().toStdString().c_str());
+		return;
+	}
 
 	QTextStream textStream(&file);
 
@@ -57,6 +72,8 @@ void LogParser::parseFile(const QString& fileName)
 		LogLineData* pLogLine = new LogLineData(line, isHeader, logType);
 		m_pStorage->addLogLine(pLogLine);
 	}
+
+	m_logClient->Info("Parsing file '%s' completed", fileName.toStdString().c_str());
 
 	fireCompleteParse();
 }

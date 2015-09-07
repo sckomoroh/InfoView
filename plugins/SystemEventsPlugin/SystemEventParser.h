@@ -8,11 +8,14 @@
 #include "SystemEventData.h"
 #include "SystemEventStorage.h"
 
+#include "ILogClient.h"
+
 class SystemEventParser
 {
 private:
 	QList<ISystemEventParserListener*> m_listeners;
 	SystemEventStorage* m_pStorage;
+	ILogClient* m_logClient;
 
 public:
 	SystemEventParser();

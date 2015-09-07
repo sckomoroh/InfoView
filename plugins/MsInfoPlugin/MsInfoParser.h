@@ -8,11 +8,14 @@
 #include "MsInfoStorage.h"
 #include "IMsInfoParserListener.h"
 
+#include "ILogClient.h"
+
 class MsInfoParser
 {
 private:
 	MsInfoStorage* m_pStorage;
 	IMsInfoParserListener* m_pListener;
+	ILogClient* m_logClient;
 
 public:
 	MsInfoParser();

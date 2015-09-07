@@ -46,7 +46,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\..\include\plugin;..\..\include\logging</IncludePath>
-    <IntDir>$(Platform)\$(Configuration)\obj</IntDir>
+    <IntDir>$(Platform)\$(Configuration)\obj\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\..\include\plugin;..\..\include\logging</IncludePath>

@@ -6,6 +6,7 @@ UnZipThread::UnZipThread(QObject *parent)
 	: QThread(parent)
 {
 	m_pZipInstance = getZipInstance();
+	m_logClient = getLogClientInstance();
 }
 
 UnZipThread::~UnZipThread()
@@ -16,14 +17,14 @@ UnZipThread::~UnZipThread()
 void UnZipThread::run()
 {
 	emit unzipStarted();
-	qDebug() << "[UNZIP-THREAD] Unzip started";
+	m_logClient->Info("<UNZIP-THREAD> Unzip started");
 
 	std::wstring stdZipFileName = m_zipFileName.toStdWString();
 
 	m_pZipInstance->setName(stdZipFileName);
 	if (m_pZipInstance->openZip() == false)
 	{
-		qDebug() << "[UNZIP-THREAD] Unable to open the ZIP file to extract a logs";
+		m_logClient->Info("<UNZIP-THREAD> Unable to open the ZIP file to extract a logs");
 		
 		emit unzipComplete();
 
@@ -35,15 +36,15 @@ void UnZipThread::run()
 	for (uint i = 0; i < iItemsCount; i++)
 	{
 		QString itemName = QString::fromStdWString(m_pZipInstance->getItemName(i));
-		
-		qDebug() << "[UNZIP-THREAD] Try to unzip the item: " << itemName;
+
+		m_logClient->Debug("<UNZIP-THREAD> Try to unzip the item: '%s'", itemName.toStdString().c_str());
 
 		QString targetName = m_targetFolder + "\\" + itemName;
 		std::wstring stdTargetName = targetName.toStdWString();
 
 		if (m_pZipInstance->unzipItem(i, stdTargetName) == false)
 		{
-			qDebug() << "[UNZIP-THREAD] Unable to unzip item #" << i << " name: " << itemName << " To: '" << targetName;
+			m_logClient->Error("<UNZIP-THREAD> Unable to unzip item #%d name: %s To: %s", i, itemName.toStdString().c_str(), targetName.toStdString().c_str());
 		}
 
 		emit unzipProgress(i + 1, iItemsCount);
@@ -51,7 +52,7 @@ void UnZipThread::run()
 
 	m_pZipInstance->closeZip();
 
-	qDebug() << "[UNZIP-THREAD] Unzip complete";
+	m_logClient->Info("<UNZIP-THREAD> Unzip complete");
 
 	emit unzipComplete();
 }

@@ -12,7 +12,9 @@
 
 #include "LogViewForm.h"
 #include "AmazonDownloadDialog.h"
+
 #include "IPlugin.h"
+#include "ILogClient.h"
 
 class MainWindow : public QMainWindow
 {
@@ -30,6 +32,8 @@ private:
 	QMap<QString, QAxWidget*> m_winPlugins;
 	QMap<QString, QAction*> m_pluginActions;
 	QMap<QString, QDockWidget*> m_pluginWidgets;
+
+	ILogClient* m_logClient;
 
 public:
 	MainWindow(QWidget *parent = 0);
