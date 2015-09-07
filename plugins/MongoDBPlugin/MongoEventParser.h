@@ -7,6 +7,8 @@
 #include "IMongoEventParserListener.h"
 #include "MongoEventStorage.h"
 
+#include "ILogClient.h"
+
 class MongoEventParser
 {
 private:
@@ -14,6 +16,8 @@ private:
 
 	QList<IMongoEventParserListener*> m_listeners;
 	MongoEventStorage* m_pStorage;
+
+	ILogClient* m_logClient;
 
 public:
 	MongoEventParser();
@@ -34,7 +38,8 @@ private:
 	void fireEventParsed(uint iCurrent, uint iTotal);
 	void fireCompleteParsingEvents();
 
-	static void readEventsMap();
+	void readEventsMap();
+	
 	static MongoEventData::EventLevel parseEventLevel(const QString& strLevel);
 };
 

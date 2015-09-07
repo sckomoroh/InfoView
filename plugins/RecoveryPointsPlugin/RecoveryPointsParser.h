@@ -12,12 +12,14 @@
 #include "IRecoveryPointsParserListener.h"
 #include "RecoveryPointsStorage.h"
 
+#include "ILogClient.h"
 
 class RecoveryPointsParser
 {
 private:
 	IRecoveryPointsParserListener*	m_pListener;
 	RecoveryPointsStorage*			m_pStorage;
+	ILogClient* m_logClient;
 
 public:
 	RecoveryPointsParser();

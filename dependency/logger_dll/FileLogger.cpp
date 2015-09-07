@@ -25,7 +25,7 @@ bool CFileLogger::InfoV(char* s_format_str, va_list arg_list){
 	if(!(m_log_level & INFO_LEVEL))
 		return false;
 
-	bool b_result = _LogMessage("[INFO]  ", s_format_str, arg_list);
+	bool b_result = _LogMessage("[INFO ] ", s_format_str, arg_list);
 
 	return b_result;
 }
@@ -34,7 +34,7 @@ bool CFileLogger::WarnV(char* s_format_str, va_list arg_list){
 	if (!(m_log_level & INFO_LEVEL))
 		return false;
 
-	bool b_result = _LogMessage("[WARN]  ", s_format_str, arg_list);
+	bool b_result = _LogMessage("[WARN ] ", s_format_str, arg_list);
 
 	return b_result;
 }

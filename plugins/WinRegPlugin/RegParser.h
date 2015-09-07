@@ -7,12 +7,16 @@
 #include "RegStorage.h"
 #include "IRegParserListener.h"
 
+#include "RegValueData.h"
+#include "ILogClient.h"
+
 class RegParser
 {
 private:
 	bool m_bNeedNextLine;
 	RegStorage* m_pStorage;
 	IRegParserListener* m_pListener;
+	ILogClient* m_logClient;
 
 public:
 	RegParser();

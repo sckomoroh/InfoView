@@ -69,35 +69,35 @@
     <ClCompile Include="GeneratedFiles\Release\moc_RegWidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="RegWidget.cpp">
-      <Filter>widget\headers</Filter>
-    </ClCompile>
-    <ClCompile Include="RegKeyData.cpp">
-      <Filter>widget\headers</Filter>
-    </ClCompile>
-    <ClCompile Include="RegKeyModel.cpp">
-      <Filter>widget\headers</Filter>
-    </ClCompile>
-    <ClCompile Include="RegParser.cpp">
-      <Filter>widget\headers</Filter>
-    </ClCompile>
-    <ClCompile Include="RegParserThread.cpp">
-      <Filter>widget\headers</Filter>
-    </ClCompile>
-    <ClCompile Include="RegStorage.cpp">
-      <Filter>widget\headers</Filter>
-    </ClCompile>
-    <ClCompile Include="RegValueData.cpp">
-      <Filter>widget\headers</Filter>
-    </ClCompile>
-    <ClCompile Include="RegValueModel.cpp">
-      <Filter>widget\headers</Filter>
-    </ClCompile>
     <ClCompile Include="winregplugin.cpp">
       <Filter>plugin\sources</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\qrc_plugin.cpp">
       <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RegKeyData.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="RegKeyModel.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="RegParser.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="RegParserThread.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="RegStorage.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="RegValueData.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="RegValueModel.cpp">
+      <Filter>widget\sources</Filter>
+    </ClCompile>
+    <ClCompile Include="RegWidget.cpp">
+      <Filter>widget\sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -114,36 +114,36 @@
       <Filter>widget\headers</Filter>
     </ClInclude>
     <ClInclude Include="RegKeyData.h">
-      <Filter>widget\sources</Filter>
+      <Filter>widget\headers</Filter>
     </ClInclude>
     <ClInclude Include="RegParser.h">
-      <Filter>widget\sources</Filter>
+      <Filter>widget\headers</Filter>
     </ClInclude>
     <ClInclude Include="RegStorage.h">
-      <Filter>widget\sources</Filter>
+      <Filter>widget\headers</Filter>
     </ClInclude>
     <ClInclude Include="RegValueData.h">
-      <Filter>widget\sources</Filter>
+      <Filter>widget\headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="RegWidget.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="RegWidget.h">
-      <Filter>widget\sources</Filter>
-    </CustomBuild>
-    <CustomBuild Include="RegKeyModel.h">
-      <Filter>widget\sources</Filter>
-    </CustomBuild>
-    <CustomBuild Include="RegParserThread.h">
-      <Filter>widget\sources</Filter>
-    </CustomBuild>
-    <CustomBuild Include="RegValueModel.h">
-      <Filter>widget\sources</Filter>
-    </CustomBuild>
     <CustomBuild Include="plugin.qrc">
       <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="RegKeyModel.h">
+      <Filter>widget\headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="RegParserThread.h">
+      <Filter>widget\headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="RegValueModel.h">
+      <Filter>widget\headers</Filter>
+    </CustomBuild>
+    <CustomBuild Include="RegWidget.h">
+      <Filter>widget\headers</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

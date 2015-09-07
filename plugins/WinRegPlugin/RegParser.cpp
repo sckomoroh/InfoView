@@ -6,10 +6,12 @@
 #include <QDebug>
 #include <QDir>
 
+#include "ILogClient.h"
 
 RegParser::RegParser()
 {
 	m_pStorage = new RegStorage;
+	m_logClient = getLogClientInstance();
 }
 
 RegParser::~RegParser()
@@ -24,6 +26,7 @@ void RegParser::setListener(IRegParserListener* pListener)
 
 void RegParser::parseFolder(const QString& folderName)
 {
+	m_logClient->Info("<REG_PARSER> Parse files in folder %s", folderName.toStdString().c_str());
 	fireParseStart();
 
 	m_pStorage->reset();
@@ -37,6 +40,8 @@ void RegParser::parseFolder(const QString& folderName)
 
 	for each (QString fileName in files)
 	{
+		m_logClient->Debug("<REG_PARSER> Parse file %s", fileName.toStdString().c_str());
+
 		QString fullFileName = folderName + "\\" + fileName;
 		RegKeyData* key = parseFile(fullFileName);
 		rootKey->addKey(key);
@@ -45,6 +50,8 @@ void RegParser::parseFolder(const QString& folderName)
 	}
 
 	m_pStorage->setRootKey(rootKey);
+
+	m_logClient->Info("<REG_PARSER> Parse complete");
 
 	fireParseComplete();
 }

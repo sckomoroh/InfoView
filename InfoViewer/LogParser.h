@@ -6,19 +6,14 @@
 #include "LogStorage.h"
 #include "LogLineData.h"
 #include "ILogParserListener.h"
-
-#define ERROR_PREFIX    "ERRO"
-#define INFO_PREFIX     "INFO"
-#define WARN_PREFIX     "WARN"
-#define DEBUG_PREFIX    "DEBU"
-#define TRACE_PREFIX    "TRAC"
-#define FATAL_PREFIX    "FATA"
+#include "ILogClient.h"
 
 class LogParser
 {
 private:
 	LogStorage* m_pStorage;
 	ILogParserListener* m_pListener;
+	ILogClient* m_logClient;
 
 public:
 	LogParser();

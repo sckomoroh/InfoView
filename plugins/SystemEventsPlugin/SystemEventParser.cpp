@@ -6,6 +6,7 @@
 SystemEventParser::SystemEventParser()
 {
 	m_pStorage = new SystemEventStorage;
+	m_logClient = getLogClientInstance();
 }
 
 SystemEventParser::~SystemEventParser()
@@ -20,6 +21,8 @@ void SystemEventParser::addListener(ISystemEventParserListener* pListener)
 
 void SystemEventParser::parseFile(const QString& fileName)
 {
+	m_logClient->Info("<SYS-EVT> Start parse file %s", fileName.toStdString().c_str());
+
 	fireEventStartParsing();
 
 	m_pStorage->clear();
@@ -27,7 +30,7 @@ void SystemEventParser::parseFile(const QString& fileName)
 	QFile eventsFile(fileName);
 	if (!eventsFile.open(QIODevice::ReadOnly))
 	{
-		qDebug() << "Unable to open events file";
+		m_logClient->Error("<SYS-EVT> Unable to open events file: %s", fileName.toStdString().c_str());
 		fireEventCompleteParsing();
 		return;
 	}
@@ -35,7 +38,7 @@ void SystemEventParser::parseFile(const QString& fileName)
 	QDomDocument doc;
 	if (!doc.setContent(&eventsFile))
 	{
-		qDebug() << "Unable to set content";
+		m_logClient->Error("<SYS-EVT> Unable to parse XML content");
 		fireEventCompleteParsing();
 		eventsFile.close();
 		return;
@@ -58,6 +61,8 @@ void SystemEventParser::parseFile(const QString& fileName)
 
 		elementIter = elementIter.nextSiblingElement();
 	}
+
+	m_logClient->Info("<SYS-EVT> Parsing completed");
 
 	fireEventCompleteParsing();
 }

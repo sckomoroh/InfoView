@@ -12,13 +12,28 @@
 
 #include "ILogClient.h"
 
-#define RECENT_OPENED_NAME "recentOpened"
+#define RECENT_OPENED_NAME	"recentOpened"
+#define LOG_LEVEL_NAME		"logLevel"
+#define COMPANY_NAME		"SelfProduction"
+#define APPLICATION_NAME	"Info view"
+
+#define LOG_FILE_NAME	"/info-view.log"
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
-	, m_applicationSettings(QSettings::NativeFormat, QSettings::UserScope, "SelfProduction", "Info view")
+	, m_applicationSettings(QSettings::NativeFormat, QSettings::UserScope, COMPANY_NAME, APPLICATION_NAME)
 {
 	ui.setupUi(this);
+
+	QString path = QCoreApplication::applicationDirPath() + LOG_FILE_NAME;
+	string strPath = path.toStdString();
+	char* sPath = const_cast<char*>(strPath.c_str());
+
+	int logLevel = m_applicationSettings.value(LOG_LEVEL_NAME, QVariant::fromValue<int>(13/*INFO + ERROR + WARN*/)).toInt();
+
+	m_logClient = getLogClientInstance();
+	m_logClient->initLogger(sPath);
+	m_logClient->setLogLevel(logLevel);
 
 	m_pDownloadDialog = new AmazonDownloadDialog(this);
 
@@ -74,10 +89,10 @@ void MainWindow::openFolder(QString folder)
 	}
 
 	m_logForms.clear();
-	
 	QDir logsFolder(folder + "\\AppRecoveryLogs\\", "*.log");
 	if (!logsFolder.exists())
 	{
+		m_logClient->Warn("The folder %s does not exists. Nothing will be opened.", logsFolder.absolutePath().toStdString().c_str());
 		QMessageBox msgBox;
 		msgBox.setText("The folder does not exists");
 		msgBox.setIcon(QMessageBox::Critical);
@@ -89,21 +104,33 @@ void MainWindow::openFolder(QString folder)
 		return;
 	}
 
+	string strFolder = folder.toStdString();
+
+	m_logClient->Info("Open logs from folder '%s'", strFolder.c_str());
+	m_logClient->Debug("Initialize QT plug-ins");
+
 	wchar_t folderBuffer[1024] = { 0 };
 	folder.toWCharArray(folderBuffer);
 	QMap<QString, IPlugin*>::iterator pluginIter = m_plugins.begin();
 	for (; pluginIter != m_plugins.end(); ++pluginIter)
 	{
 		IPlugin* pluginInst = *pluginIter;
+
+		QString pluginName = QString::fromWCharArray(pluginInst->getPluginName());
+		m_logClient->Debug("Initialize plug-in '%s'", pluginName.toStdString().c_str());
+
 		pluginInst->resetPluginData();
 		pluginInst->initPluginData(folderBuffer);
 	}
+
+	m_logClient->Debug("Initialize Active-X plug-ins");
 
 	QVariant folderVar(folder);
 	QMap<QString, QAxWidget*>::iterator winPluginIter = m_winPlugins.begin();
 	for (; winPluginIter != m_winPlugins.end(); ++winPluginIter)
 	{
 		QAxWidget* winPluginInst = *winPluginIter;
+
 		winPluginInst->dynamicCall("ResetPluginData()");
 		winPluginInst->dynamicCall("InitPluginData(BSTR)", folderVar);
 	}
@@ -205,6 +232,8 @@ void MainWindow::onLogsCompleted()
 
 void MainWindow::initPlugins()
 {
+	m_logClient->Info("Load QT plug-ins");
+
 	QString path = QCoreApplication::applicationDirPath() + "/plugins";
 
 	QDir dir(path);
@@ -216,6 +245,8 @@ void MainWindow::initPlugins()
 	for (; iter != pluginsNames.end(); ++iter)
 	{
 		QString pluginName = *iter;
+		m_logClient->Debug("Load plug-in from file '%s'", pluginName.toStdString().c_str());
+
 		initPlugin(path + "/" + pluginName);
 	}
 }
@@ -243,7 +274,9 @@ void MainWindow::initPlugin(const QString& pluginFileName)
 	}
 	else
 	{
-		qDebug() << "Unable to load plugin DLL. Error: " << pluginLib->errorString();
+		QString loadError = pluginLib->errorString();
+
+		m_logClient->Error("Unable to load plugin '%s' with error '%s'", pluginFileName.toStdString().c_str(), loadError.toStdString().c_str());
 	}
 }
 
@@ -287,6 +320,8 @@ QDockWidget* MainWindow::createQtPlugin(QLibrary* lib)
 		return pluginDockWidget;
 	}
 
+	m_logClient->Error("Unable to find function 'createQtPlugin' in DLL");
+
 	return NULL;
 }
 
@@ -325,11 +360,13 @@ void MainWindow::initActiveXPlugins()
 	QFile file(fileName);
 	if (!file.open(QIODevice::ReadOnly))
 	{
+		m_logClient->Error("Unable to find file 'plugins.xml'");
 		return;
 	}
 
 	if (!document.setContent(&file)) 
 	{
+		m_logClient->Error("Unable to parse file 'plugins.xml'");
 		file.close();
 		return;
 	}
@@ -345,6 +382,8 @@ void MainWindow::initActiveXPlugins()
 		{
 			QDomElement pluginElement = pluginNode.toElement();
 			QString pluginInstanceName = pluginElement.attribute("InstanceName");
+
+			m_logClient->Debug("Creating Active-X plugin '%s'", pluginInstanceName.toStdString().c_str());
 
 			if (!pluginInstanceName.isNull() && !pluginInstanceName.isEmpty())
 			{
@@ -373,18 +412,21 @@ QDockWidget* MainWindow::createActiveXPlugin(QString pluginInstanceName)
 
 	if (pluginNameVar.isNull())
 	{
+		m_logClient->Error("Unable to create Active-X plugin '%s' due to can get name", pluginInstanceName.toStdString().c_str());
 		delete axWidget;
 		return NULL;
 	}
 
 	if (pluginIconVar.isNull())
 	{
+		m_logClient->Error("Unable to create Active-X plugin '%s' due to can get icon", pluginInstanceName.toStdString().c_str());
 		delete axWidget;
 		return NULL;
 	}
 
 	if (pluginIdVar.isNull())
 	{
+		m_logClient->Error("Unable to create Active-X plugin '%s' due to can get ID", pluginInstanceName.toStdString().c_str());
 		delete axWidget;
 		return NULL;
 	}

@@ -3,6 +3,8 @@
 #include <QStringList>
 #include <QDebug>
 
+#include "ILogClient.h"
+
 int CheckStatesParser::parseCheckState(QString strCheck)
 {
 	QStringList checks = strCheck.split(" ");
@@ -33,7 +35,7 @@ int CheckStatesParser::parseCheckState(QString strCheck)
 
 		if (check != "None")
 		{
-			qDebug() << "CHECK STATE:" << check;
+			getLogClientInstance()->Debug("<RP-CHKSTS> CHECK STATE:", check.toStdString().c_str());
 		}
 	}
 

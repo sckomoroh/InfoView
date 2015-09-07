@@ -14,6 +14,7 @@ public:
 
 	virtual bool Error(char*, ...) = 0;
 	virtual bool Info(char*, ...) = 0;
+	virtual bool Warn(char*, ...) = 0;
 	virtual bool Debug(char*, ...) = 0;
 };
 
